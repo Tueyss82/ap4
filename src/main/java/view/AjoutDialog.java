@@ -7,6 +7,7 @@ package view;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+
 /**
  *
  * @author t.combarieu
