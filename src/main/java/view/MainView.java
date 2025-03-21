@@ -44,7 +44,7 @@ public class MainView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnValidNouveau.setText("Valider");
+        btnValidNouveau.setText("Ajouter");
         btnValidNouveau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValidNouveauActionPerformed(evt);
@@ -116,7 +116,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnValidNouveauActionPerformed
 
     private void btnValidModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidModifActionPerformed
-        listeners.firePropertyChange("validModifUser", null, null);
+        listeners.firePropertyChange("modifUser", null, null);
     }//GEN-LAST:event_btnValidModifActionPerformed
 
     private void AjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutActionPerformed
