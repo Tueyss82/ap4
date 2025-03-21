@@ -1,7 +1,7 @@
 package DAO;
 
 import model.MySQLConnection;
-import model.Client;
+import model.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,98 +28,86 @@ public class UtilisateurDAO {
             String sql = "INSERT INTO utilisateur (ID, NOM, PRENOM, ADRESSE_MAIL, IDENTIFIANT, MOT_DE_PASSE,) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, utilisateur.getID());
-            ps.setInt(2, client.getRAISON_SOCIAL());
-            ps.setString(3, client.getNOM());
-            ps.setString(4, client.getPRENOM());
-            ps.setString(5, client.getEMAIL());
-            ps.setInt(6, client.getTELEPHONE());
-            ps.setString(7, client.getADRESSE());
-            ps.setInt(8, client.getCODE_POSTAL());
-            ps.setString(9, client.getVILLE());
+            ps.setString(2, utilisateur.getNOM());
+            ps.setString(3, utilisateur.getPRENOM());
+            ps.setString(4, utilisateur.getADRESSE_MAIL());
+            ps.setString(5, utilisateur.getIDENTIFIANT());
+            ps.setInt(6, utilisateur.getMOT_DE_PASSE());
             ps.executeUpdate();
-            return client;
+            return utilisateur;
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "DB : Erreur lors de la création du client");
-            return client;
+            JOptionPane.showMessageDialog(null, "DB : Erreur lors de la création de l'utilisateur");
+            return utilisateur;
         }
     }
 
-    public List<Client> getAll() {
-        List<Client> client = new ArrayList<Client>();
-        String query = "SELECT * FROM CLIENT";
+    public List<Utilisateur> getAll() {
+        List<Utilisateur> utilisateur = new ArrayList<Utilisateur>();
+        String query = "SELECT * FROM UTILISATEUR";
         Statement statement;
         try {
             statement = this.connexion.createStatement();
             ResultSet result = statement.executeQuery(query);
             while (result.next()) {
-                int id = Integer.parseInt(result.getString("ID_CLIENT"));
-                int raison_sociale = Integer.parseInt(result.getString("RAISON_SOCIAL"));
+                int id = Integer.parseInt(result.getString("ID"));
                 String nom = result.getString("NOM");
                 String prenom = result.getString("PRENOM");
-                String email = result.getString("EMAIL");
-                int telephone = Integer.parseInt(result.getString("TELEPHONE"));
-                String adresse = result.getString("ADRESSE");
-                int code_postal = Integer.parseInt(result.getString("CODE_POSTAL"));
-                String ville = result.getString("VILLE");
-          
-            Client client2 = new Client(id, raison_sociale, nom, prenom, email, telephone, adresse, code_postal, ville);
-            client.add(client2);
+                String adresse_mail = result.getString("ADRESSE_MAIL");
+                String identifiant = result.getString("IDENTIFIANT");
+                int mot_de_passe = Integer.parseInt(result.getString("MOT_DE_PASSE"));
+
+                Utilisateur utilisateur2 = new Utilisateur(id, nom, prenom, adresse_mail, identifiant, mot_de_passe);
+                utilisateur.add(utilisateur2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return client;
+        return utilisateur;
     }
 
     public static Connection getConnexion() {
         return getConnexion();
     }
 
-    public Client update(Client client) {
+    public Utilisateur update(Utilisateur utilisateur) {
         try {
             Connection connection = this.connexion;
-            String sql = "UPDATE client set ID_CLIENT = ?, RAISON_SOCIAL = ?, NOM = ?, PRENOM = ?, EMAIL = ?, TELEPHONE = ?, ADRESSE = ?, CODE_POSTAL = ?, CODE_POSTAL = ?";
+            String sql = "UPDATE utilisateur set ID = ?, NOM = ?, PRENOM = ?, ADRESSE_MAIL = ?, IDENTIFIANT = ?, MOT_DE_PASSE = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, client.getID_CLIENT());
-            ps.setInt(2, client.getRAISON_SOCIAL());
-            ps.setString(3, client.getNOM());
-            ps.setString(4, client.getPRENOM());
-            ps.setString(5, client.getEMAIL());
-            ps.setInt(6, client.getTELEPHONE());
-            ps.setString(7, client.getADRESSE());
-            ps.setInt(8, client.getCODE_POSTAL());
-            ps.setString(9, client.getVILLE());
+            ps.setInt(1, utilisateur.getID());
+            ps.setString(2, utilisateur.getNOM());
+            ps.setString(3, utilisateur.getPRENOM());
+            ps.setString(4, utilisateur.getADRESSE_MAIL());
+            ps.setString(5, utilisateur.getIDENTIFIANT());
+            ps.setInt(6, utilisateur.getMOT_DE_PASSE());
             ps.executeUpdate();
-            return client;
+            return utilisateur;
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "DB : Erreur lors de la modification de l'utilisateur");
-            return client;
+            return utilisateur;
         }
     }
 
-    public Client delete(Client client) {
+    public Utilisateur delete(Utilisateur utilisateur) {
         try {
             Connection connection = this.connexion;
-            String sql = "DELETE FROM client ID_CLIENT = ?, RAISON_SOCIAL = ?, NOM = ?, PRENOM = ?, EMAIL = ?, TELEPHONE = ?, ADRESSE = ?, CODE_POSTAL = ?, VILLE = ?";
+            String sql = "DELETE FROM utilisateur ID = ?, NOM = ?, PRENOM = ?, ADRESSE_MAIL = ?, IDENTIFIANT = ?, MOT_DE_PASSE = ?";
             PreparedStatement ps = connection.prepareStatement(sql);;
-           ps.setInt(1, client.getID_CLIENT());
-            ps.setInt(2, client.getRAISON_SOCIAL());
-            ps.setString(3, client.getNOM());
-            ps.setString(4, client.getPRENOM());
-            ps.setString(5, client.getEMAIL());
-            ps.setInt(6, client.getTELEPHONE());
-            ps.setString(7, client.getADRESSE());
-            ps.setInt(8, client.getCODE_POSTAL());
-            ps.setString(9, client.getVILLE());
+            ps.setInt(1, utilisateur.getID());
+            ps.setString(2, utilisateur.getNOM());
+            ps.setString(3, utilisateur.getPRENOM());
+            ps.setString(4, utilisateur.getADRESSE_MAIL());
+            ps.setString(5, utilisateur.getIDENTIFIANT());
+            ps.setInt(6, utilisateur.getMOT_DE_PASSE());
             ps.executeUpdate();
-            return client;
+            return utilisateur;
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "DB : Erreur lors de la suppression de l'utilisateur");
-            return client;
+            return utilisateur;
         }
     }
 }
