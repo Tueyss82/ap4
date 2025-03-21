@@ -9,6 +9,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JOptionPane;
 import model.UserListModel;
 import view.MainView;
+import view.AjoutDialog;
 
 /**
  *
@@ -18,12 +19,16 @@ public class MainControl implements PropertyChangeListener {
 
     private MainView view;
     private UserListModel userListModel;
-
+    private AjoutDialog ajoutDialog;
+    
     public MainControl(MainView v) {
         this.view = v;
         this.view.addPropertyChangeListener(this);
         this.userListModel = new UserListModel();
         this.view.setTableModel(userListModel);
+        this.ajoutDialog=new AjoutDialog(this.view,true);
+        this.ajoutDialog.addPropertyChangeListener(this);
+        
     }
 
     public void propertyChange(PropertyChangeEvent evt) {
@@ -31,8 +36,8 @@ public class MainControl implements PropertyChangeListener {
             case "validModifUser":
                 JOptionPane.showMessageDialog(this.view, this.view.message("Test Modif User Button"));
                 break;
-            case "validNouveauUser":
-                JOptionPane.showMessageDialog(this.view, this.view.message("Test Nouveau User Button"));
+            case "ajoutuser":
+                this.ajoutDialog.setVisible(true);
                 break;
         }
     }

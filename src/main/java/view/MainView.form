@@ -30,6 +30,8 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="Ajout" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="btnValidModif" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
               <Component id="btnValidNouveau" min="-2" max="-2" attributes="0"/>
@@ -46,6 +48,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnValidNouveau" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnValidModif" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Ajout" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="157" max="32767" attributes="0"/>
           </Group>
@@ -88,6 +91,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnValidModifActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Ajout">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ajouter"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AjoutActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
