@@ -61,7 +61,7 @@ public class UtilisateurDAO {
                 utilisateur.add(utilisateur2);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClientDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UtilisateurDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return utilisateur;
