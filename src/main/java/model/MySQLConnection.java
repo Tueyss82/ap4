@@ -12,9 +12,9 @@ import java.util.logging.Level;
 
 public class MySQLConnection {
     
-    private static final String url = "jdbc:mysql://localhost:3306/amset";
+    private static final String url = "jdbc:mysql://localhost:3306/ap4usertable";
     private static final String user = "root";
-    private static final String pass = "localroot";
+    private static final String pass = "";
     
     private static Connection con = null;
     
