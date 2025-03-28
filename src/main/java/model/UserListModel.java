@@ -4,7 +4,10 @@
  */
 package model;
 
+import DAO.UtilisateurDAO;
+import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -15,17 +18,24 @@ public class UserListModel extends AbstractTableModel {
 
     //Attributs
     private final String[] nomColumn = {"ID", "Nom", "Prénom", "Mail", "Identifiant", "Password"};
-    private ArrayList<User> userList = new ArrayList<User>();
+    private List<User> userList = new ArrayList<User>();
+    
+    private final Connection connexion;
+    private UtilisateurDAO userData = new UtilisateurDAO();
 
     public UserListModel() {
-        this.userList.add(new User(1, "SAGE", "Matéo", "mateo.sage@gmail.com", "", ""));
-        this.userList.add(new User(2, "XIONG", "Teddy", "teddy.xiong@gmail.com", "", ""));
-        this.userList.add(new User(3, "ZIMMERMANN", "Ethane", "ethane.zimmermann@gmail.com", "", ""));
-        this.userList.add(new User(4, "MARQUEZ", "Paul", "paul.marquez@gmail.com", "", ""));
-        this.userList.add(new User(5, "PINA", "Ronald", "ronald.pina@gmail.com", "", ""));
-        this.userList.add(new User(6, "TALSEUM", "Eliaz", "eliaz.talseum@gmail.com", "", ""));
-        this.userList.add(new User(7, "BASCK", "Emmanuel", "emmanuel.basck@gmail.com", "", ""));
-        this.userList.add(new User(8, "CRANE", "Lewis", "lewis.crane@gmail.com", "", ""));
+        //this.userList.add(new User(1, "SAGE", "Matéo", "mateo.sage@gmail.com", "", ""));
+        //this.userList.add(new User(2, "XIONG", "Teddy", "teddy.xiong@gmail.com", "", ""));
+        //this.userList.add(new User(3, "ZIMMERMANN", "Ethane", "ethane.zimmermann@gmail.com", "", ""));
+        //this.userList.add(new User(4, "MARQUEZ", "Paul", "paul.marquez@gmail.com", "", ""));
+        //this.userList.add(new User(5, "PINA", "Ronald", "ronald.pina@gmail.com", "", ""));
+        //this.userList.add(new User(6, "TALSEUM", "Eliaz", "eliaz.talseum@gmail.com", "", ""));
+        //this.userList.add(new User(7, "BASCK", "Emmanuel", "emmanuel.basck@gmail.com", "", ""));
+        //this.userList.add(new User(8, "CRANE", "Lewis", "lewis.crane@gmail.com", "", ""));
+        
+        this.connexion = MySQLConnection.getConnexion();
+        this.userList = this.userData.getAll();
+        
     }
 
     public String getColumnName(int column) {
@@ -51,6 +61,10 @@ public class UserListModel extends AbstractTableModel {
                 return i.getPrenom();
             case 3:
                 return i.getMail();
+            case 4:
+                return i.getIdentifiant();
+            case 5:
+                return i.getPassword();
         }
         return "Non Défini";
     }
