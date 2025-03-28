@@ -114,6 +114,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="JTextIdentifiant">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTextIdentifiantActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jPrenom">
       <Properties>

@@ -131,9 +131,6 @@ public class MainView extends javax.swing.JFrame {
         listeners.firePropertyChange("modifUser", null, null);
     }//GEN-LAST:event_modifUserActionPerformed
 
-    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        listeners.firePropertyChange("ajoutuser", null, null);    }//GEN-LAST:event_addUserActionPerformed
-
     private void usersListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersListMouseClicked
         
     }//GEN-LAST:event_usersListMouseClicked
@@ -144,6 +141,10 @@ public class MainView extends javax.swing.JFrame {
         int selectedRowIndex = usersList.getSelectedRow();
         
     }//GEN-LAST:event_modifUserMouseClicked
+
+    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
+        listeners.firePropertyChange("ajoutUser", null, null);
+    }//GEN-LAST:event_addUserActionPerformed
 
     public String message(String mess) {
         return mess;
