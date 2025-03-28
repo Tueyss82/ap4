@@ -7,6 +7,7 @@ package view;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+
 /**
  *
  * @author t.combarieu
@@ -161,7 +162,6 @@ public class AjoutDialog extends javax.swing.JDialog {
 
     private void JAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAjouterActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_JAjouterActionPerformed
 
     private void jComboRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboRoleActionPerformed

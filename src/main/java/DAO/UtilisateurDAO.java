@@ -1,7 +1,7 @@
 package DAO;
 
 import model.MySQLConnection;
-import model.Utilisateur;
+import model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,17 +22,17 @@ public class UtilisateurDAO {
         this.connexion = MySQLConnection.getConnexion();
     }
 
-    public Utilisateur create(Utilisateur utilisateur) {
+    public User create(User utilisateur) {
         try {
             Connection con = this.connexion;
             String sql = "INSERT INTO utilisateur (ID, NOM, PRENOM, ADRESSE_MAIL, IDENTIFIANT, MOT_DE_PASSE,) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, utilisateur.getID());
-            ps.setString(2, utilisateur.getNOM());
-            ps.setString(3, utilisateur.getPRENOM());
-            ps.setString(4, utilisateur.getADRESSE_MAIL());
-            ps.setString(5, utilisateur.getIDENTIFIANT());
-            ps.setInt(6, utilisateur.getMOT_DE_PASSE());
+            ps.setInt(1, utilisateur.getId());
+            ps.setString(2, utilisateur.getNom());
+            ps.setString(3, utilisateur.getPrenom());
+            ps.setString(4, utilisateur.getMail());
+            ps.setString(5, utilisateur.getIdentifiant());
+            ps.setString(6, utilisateur.getPassword());
             ps.executeUpdate();
             return utilisateur;
         } catch (Exception e) {
@@ -42,8 +42,8 @@ public class UtilisateurDAO {
         }
     }
 
-    public List<Utilisateur> getAll() {
-        List<Utilisateur> utilisateur = new ArrayList<Utilisateur>();
+    public List<User> getAll() {
+        List<User> utilisateur = new ArrayList<User>();
         String query = "SELECT * FROM UTILISATEUR";
         Statement statement;
         try {
@@ -55,9 +55,9 @@ public class UtilisateurDAO {
                 String prenom = result.getString("PRENOM");
                 String adresse_mail = result.getString("ADRESSE_MAIL");
                 String identifiant = result.getString("IDENTIFIANT");
-                int mot_de_passe = Integer.parseInt(result.getString("MOT_DE_PASSE"));
+                String mot_de_passe = result.getString(result.getString("MOT_DE_PASSE"));
 
-                Utilisateur utilisateur2 = new Utilisateur(id, nom, prenom, adresse_mail, identifiant, mot_de_passe);
+                User utilisateur2 = new User(id, nom, prenom, adresse_mail, identifiant, mot_de_passe);
                 utilisateur.add(utilisateur2);
             }
         } catch (SQLException ex) {
@@ -71,17 +71,17 @@ public class UtilisateurDAO {
         return getConnexion();
     }
 
-    public Utilisateur update(Utilisateur utilisateur) {
+    public User update(User utilisateur) {
         try {
             Connection connection = this.connexion;
             String sql = "UPDATE utilisateur set ID = ?, NOM = ?, PRENOM = ?, ADRESSE_MAIL = ?, IDENTIFIANT = ?, MOT_DE_PASSE = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, utilisateur.getID());
-            ps.setString(2, utilisateur.getNOM());
-            ps.setString(3, utilisateur.getPRENOM());
-            ps.setString(4, utilisateur.getADRESSE_MAIL());
-            ps.setString(5, utilisateur.getIDENTIFIANT());
-            ps.setInt(6, utilisateur.getMOT_DE_PASSE());
+            ps.setInt(1, utilisateur.getId());
+            ps.setString(2, utilisateur.getNom());
+            ps.setString(3, utilisateur.getPrenom());
+            ps.setString(4, utilisateur.getMail());
+            ps.setString(5, utilisateur.getIdentifiant());
+            ps.setString(6, utilisateur.getPassword());
             ps.executeUpdate();
             return utilisateur;
         } catch (Exception e) {
@@ -91,17 +91,17 @@ public class UtilisateurDAO {
         }
     }
 
-    public Utilisateur delete(Utilisateur utilisateur) {
+    public User delete(User utilisateur) {
         try {
             Connection connection = this.connexion;
             String sql = "DELETE FROM utilisateur ID = ?, NOM = ?, PRENOM = ?, ADRESSE_MAIL = ?, IDENTIFIANT = ?, MOT_DE_PASSE = ?";
             PreparedStatement ps = connection.prepareStatement(sql);;
-            ps.setInt(1, utilisateur.getID());
-            ps.setString(2, utilisateur.getNOM());
-            ps.setString(3, utilisateur.getPRENOM());
-            ps.setString(4, utilisateur.getADRESSE_MAIL());
-            ps.setString(5, utilisateur.getIDENTIFIANT());
-            ps.setInt(6, utilisateur.getMOT_DE_PASSE());
+            ps.setInt(1, utilisateur.getId());
+            ps.setString(2, utilisateur.getNom());
+            ps.setString(3, utilisateur.getPrenom());
+            ps.setString(4, utilisateur.getMail());
+            ps.setString(5, utilisateur.getIdentifiant());
+            ps.setString(6, utilisateur.getPassword());
             ps.executeUpdate();
             return utilisateur;
         } catch (Exception e) {

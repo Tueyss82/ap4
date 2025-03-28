@@ -14,28 +14,40 @@ public class User {
     private String nom;
     private String prenom;
     private String email;
+    private String identifiant;
+    private String password;
 
-    public User(int id, String nom, String prenom, String email) {
+    public User(int id, String nom, String prenom, String email, String identifiant, String password) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
+        this.identifiant = identifiant;
+        this.password = password;
     }
 
-    Object getId() {
+    public int getId() {
         return this.id;
     }
 
-    Object getName() {
+    public String getNom() {
         return this.nom;
     }
 
-    Object getMail() {
+    public String getMail() {
         return this.email;
     }
 
-    Object getPrenom() {
+    public String getPrenom() {
         return this.prenom;
+    }
+    
+    public String getIdentifiant() {
+        return this.identifiant;
+    }
+    
+    public String getPassword() {
+        return this.password;
     }
     
 }

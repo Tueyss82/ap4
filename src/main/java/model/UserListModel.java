@@ -14,18 +14,18 @@ import javax.swing.table.AbstractTableModel;
 public class UserListModel extends AbstractTableModel {
 
     //Attributs
-    private final String[] nomColumn = {"ID", "Nom", "Prénom", "Mail"};
+    private final String[] nomColumn = {"ID", "Nom", "Prénom", "Mail", "Identifiant", "Password"};
     private ArrayList<User> userList = new ArrayList<User>();
 
     public UserListModel() {
-        this.userList.add(new User(1, "SAGE", "Matéo", "mateo.sage@gmail.com"));
-        this.userList.add(new User(2, "XIONG", "Teddy", "teddy.xiong@gmail.com"));
-        this.userList.add(new User(3, "ZIMMERMANN", "Ethane", "ethane.zimmermann@gmail.com"));
-        this.userList.add(new User(4, "MARQUEZ", "Paul", "paul.marquez@gmail.com"));
-        this.userList.add(new User(5, "PINA", "Ronald", "ronald.pina@gmail.com"));
-        this.userList.add(new User(6, "TALSEUM", "Eliaz", "eliaz.talseum@gmail.com"));
-        this.userList.add(new User(7, "BASCK", "Emmanuel", "emmanuel.basck@gmail.com"));
-        this.userList.add(new User(8, "CRANE", "Lewis", "lewis.crane@gmail.com"));
+        this.userList.add(new User(1, "SAGE", "Matéo", "mateo.sage@gmail.com", "", ""));
+        this.userList.add(new User(2, "XIONG", "Teddy", "teddy.xiong@gmail.com", "", ""));
+        this.userList.add(new User(3, "ZIMMERMANN", "Ethane", "ethane.zimmermann@gmail.com", "", ""));
+        this.userList.add(new User(4, "MARQUEZ", "Paul", "paul.marquez@gmail.com", "", ""));
+        this.userList.add(new User(5, "PINA", "Ronald", "ronald.pina@gmail.com", "", ""));
+        this.userList.add(new User(6, "TALSEUM", "Eliaz", "eliaz.talseum@gmail.com", "", ""));
+        this.userList.add(new User(7, "BASCK", "Emmanuel", "emmanuel.basck@gmail.com", "", ""));
+        this.userList.add(new User(8, "CRANE", "Lewis", "lewis.crane@gmail.com", "", ""));
     }
 
     public String getColumnName(int column) {
@@ -46,7 +46,7 @@ public class UserListModel extends AbstractTableModel {
             case 0:
                 return i.getId();
             case 1:
-                return i.getName();
+                return i.getNom();
             case 2:
                 return i.getPrenom();
             case 3:

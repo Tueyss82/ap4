@@ -6,11 +6,14 @@ package control;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import javax.swing.JOptionPane;
 import model.UserListModel;
 import view.MainView;
 import view.ModifDialog;
 import view.AjoutDialog;
+
+
+
+
 /**
  *
  * @author m.perot
@@ -28,12 +31,21 @@ public class MainControl implements PropertyChangeListener {
         this.userListModel = new UserListModel();
         this.view.setTableModel(userListModel);
 
+
         this.modifDialog = new ModifDialog(this.view, true);
         this.modifDialog.addPropertyChangeListener(this);
 
         this.ajoutDialog=new AjoutDialog(this.view,true);
         this.ajoutDialog.addPropertyChangeListener(this);
         
+
+        this.ajoutDialog=new AjoutDialog(this.view,true);
+        this.ajoutDialog.addPropertyChangeListener(this);
+        
+
+        this.modifDialog = new ModifDialog(this.view, true);
+        this.modifDialog.addPropertyChangeListener(this);
+
 
     }
 

@@ -129,6 +129,8 @@ public class MainView extends javax.swing.JFrame {
     public void setTableModel(AbstractTableModel tableModel) {
         this.usersList.setModel(tableModel);
         this.usersList.removeColumn(this.usersList.getColumn("ID"));
+        this.usersList.removeColumn(this.usersList.getColumn("Identifiant"));
+        this.usersList.removeColumn(this.usersList.getColumn("Password"));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
