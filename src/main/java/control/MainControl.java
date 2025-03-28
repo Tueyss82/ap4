@@ -63,8 +63,18 @@ public class MainControl implements PropertyChangeListener {
 
                 modifDialog.setVisible(true);
                 break;
-
+            case "updateUser":
+                userListModel.update(
+                        modifDialog.getId(),
+                        modifDialog.getNom(),
+                        modifDialog.getPrenom(),
+                        modifDialog.getEmail(),
+                        modifDialog.getIdentifiant(),
+                        modifDialog.getPassword());
+                modifDialog.setVisible(false);
+                break;                        
+            }
         }
     }
 
-}
+

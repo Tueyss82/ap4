@@ -69,16 +69,16 @@ public class UtilisateurDAO {
 
     public User update(User utilisateur) { // Modification de l'utilisateur
         try {
-            String sql = "UPDATE utilisateur set ID = ?, NOM = ?, PRENOM = ?, ADRESSE_MAIL = ?, IDENTIFIANT = ?, MOT_DE_PASSE = ?";
+            String sql = "UPDATE utilisateur SET NOM = ?, PRENOM = ?, ADRESSE_MAIL = ?, IDENTIFIANT = ?, MOT_DE_PASSE = ? WHERE ID = ?"; // Requête
             PreparedStatement ps = this.connexion.prepareStatement(sql);
-            ps.setInt(1, utilisateur.getId());
-            ps.setString(2, utilisateur.getNom());
-            ps.setString(3, utilisateur.getPrenom());
-            ps.setString(4, utilisateur.getMail());
-            ps.setString(5, utilisateur.getIdentifiant());
-            ps.setString(6, utilisateur.getPassword());
-            ps.executeUpdate();
-            return utilisateur;
+            ps.setString(1, utilisateur.getNom());              // Récupération des valeurs pour la requète
+            ps.setString(2, utilisateur.getPrenom());           
+            ps.setString(3, utilisateur.getMail());             
+            ps.setString(4, utilisateur.getIdentifiant());      
+            ps.setString(5, utilisateur.getPassword());         
+            ps.setInt(6, utilisateur.getId());                  
+            ps.executeUpdate();     // Exécution de la requête
+            return utilisateur;     // Retour de l'objet utilisateur donnée en paramètre
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "DB : Erreur lors de la modification de l'utilisateur");

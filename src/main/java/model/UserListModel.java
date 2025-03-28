@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import view.MainView;
 
 /**
  *
@@ -48,6 +49,11 @@ public class UserListModel extends AbstractTableModel {
 
     public int getColumnCount() {
         return this.nomColumn.length;
+    }
+    
+    public void update(int id, String nom, String prenom, String mail, String identifiant, String password) {
+        this.userData.update(new User(id, nom, prenom, mail, identifiant, password));
+        fireTableDataChanged();
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
