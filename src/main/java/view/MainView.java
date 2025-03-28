@@ -7,6 +7,7 @@ package view;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import javax.swing.table.AbstractTableModel;
+import model.UserListModel;
 
 /**
  *
@@ -36,18 +37,18 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnValidNouveau = new javax.swing.JButton();
+        deleteUser = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         usersList = new javax.swing.JTable();
-        btnValidModif = new javax.swing.JButton();
-        Ajout = new javax.swing.JButton();
+        modifUser = new javax.swing.JButton();
+        addUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnValidNouveau.setText("Ajouter");
-        btnValidNouveau.addActionListener(new java.awt.event.ActionListener() {
+        deleteUser.setText("Supprimer");
+        deleteUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValidNouveauActionPerformed(evt);
+                deleteUserActionPerformed(evt);
             }
         });
 
@@ -62,19 +63,29 @@ public class MainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        usersList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(usersList);
 
-        btnValidModif.setText("Modifier");
-        btnValidModif.addActionListener(new java.awt.event.ActionListener() {
+        modifUser.setText("Modifier");
+        modifUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modifUserMouseClicked(evt);
+            }
+        });
+        modifUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValidModifActionPerformed(evt);
+                modifUserActionPerformed(evt);
             }
         });
 
-        Ajout.setText("Ajouter");
-        Ajout.addActionListener(new java.awt.event.ActionListener() {
+        addUser.setText("Ajouter");
+        addUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AjoutActionPerformed(evt);
+                addUserActionPerformed(evt);
             }
         });
 
@@ -83,44 +94,56 @@ public class MainView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Ajout)
-                .addGap(42, 42, 42)
-                .addComponent(btnValidModif)
-                .addGap(158, 158, 158)
-                .addComponent(btnValidNouveau)
-                .addGap(462, 462, 462))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(399, 399, 399)
+                        .addComponent(addUser)
+                        .addGap(108, 108, 108)
+                        .addComponent(modifUser)
+                        .addGap(108, 108, 108)
+                        .addComponent(deleteUser))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(257, 257, 257))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(86, 86, 86)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnValidNouveau)
-                    .addComponent(btnValidModif)
-                    .addComponent(Ajout))
-                .addContainerGap(157, Short.MAX_VALUE))
+                    .addComponent(deleteUser)
+                    .addComponent(modifUser)
+                    .addComponent(addUser))
+                .addGap(157, 157, 157))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnValidNouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidNouveauActionPerformed
-        listeners.firePropertyChange("validNouveauUser", null, null);
-    }//GEN-LAST:event_btnValidNouveauActionPerformed
+    private void deleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserActionPerformed
+        listeners.firePropertyChange("deleteUser", null, null);
+    }//GEN-LAST:event_deleteUserActionPerformed
 
-    private void btnValidModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidModifActionPerformed
+    private void modifUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifUserActionPerformed
         listeners.firePropertyChange("modifUser", null, null);
-    }//GEN-LAST:event_btnValidModifActionPerformed
+    }//GEN-LAST:event_modifUserActionPerformed
 
-    private void AjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutActionPerformed
-        listeners.firePropertyChange("ajoutuser", null, null);    }//GEN-LAST:event_AjoutActionPerformed
+    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
+        listeners.firePropertyChange("ajoutuser", null, null);    }//GEN-LAST:event_addUserActionPerformed
+
+    private void usersListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersListMouseClicked
+        
+    }//GEN-LAST:event_usersListMouseClicked
+
+    private void modifUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifUserMouseClicked
+        UserListModel selectedUserData = (UserListModel)usersList.getModel();
+        
+        int selectedRowIndex = usersList.getSelectedRow();
+        
+    }//GEN-LAST:event_modifUserMouseClicked
 
     public String message(String mess) {
         return mess;
@@ -134,10 +157,10 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Ajout;
-    private javax.swing.JButton btnValidModif;
-    private javax.swing.JButton btnValidNouveau;
+    private javax.swing.JButton addUser;
+    private javax.swing.JButton deleteUser;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modifUser;
     private javax.swing.JTable usersList;
     // End of variables declaration//GEN-END:variables
 }

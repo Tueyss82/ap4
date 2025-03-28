@@ -10,6 +10,7 @@ import model.UserListModel;
 import view.MainView;
 import view.ModifDialog;
 import view.AjoutDialog;
+import view.DeleteDialog;
 
 /**
  *
@@ -21,19 +22,22 @@ public class MainControl implements PropertyChangeListener {
     private ModifDialog modifDialog;
     private UserListModel userListModel;
     private AjoutDialog ajoutDialog;
-    
+    private DeleteDialog deleteDialog;
+
     public MainControl(MainView v) {
         this.view = v;
         this.view.addPropertyChangeListener(this);
         this.userListModel = new UserListModel();
         this.view.setTableModel(userListModel);
 
-        this.ajoutDialog=new AjoutDialog(this.view,true);
+        this.ajoutDialog = new AjoutDialog(this.view, true);
         this.ajoutDialog.addPropertyChangeListener(this);
-        
 
         this.modifDialog = new ModifDialog(this.view, true);
         this.modifDialog.addPropertyChangeListener(this);
+        
+        this.deleteDialog = new DeleteDialog(this.view, true);
+        this.deleteDialog.addPropertyChangeListener(this);
 
     }
 
@@ -42,9 +46,13 @@ public class MainControl implements PropertyChangeListener {
             case "modifUser":
                 this.modifDialog.setVisible(true);
                 break;
-            case "ajoutuser":
+            case "ajoutUser":
                 this.ajoutDialog.setVisible(true);
                 break;
+            case "deleteUser":
+                this.deleteDialog.setVisible(true);
+                break;
+
         }
     }
 
