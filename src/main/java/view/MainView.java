@@ -131,9 +131,6 @@ public class MainView extends javax.swing.JFrame {
         listeners.firePropertyChange("modifUser", null, null);
     }//GEN-LAST:event_modifUserActionPerformed
 
-    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        listeners.firePropertyChange("ajoutuser", null, null);    }//GEN-LAST:event_addUserActionPerformed
-
     private void usersListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersListMouseClicked
         
     }//GEN-LAST:event_usersListMouseClicked
@@ -145,15 +142,19 @@ public class MainView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_modifUserMouseClicked
 
+    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
+        listeners.firePropertyChange("ajoutUser", null, null);
+    }//GEN-LAST:event_addUserActionPerformed
+
     public String message(String mess) {
         return mess;
     }
 
     public void setTableModel(AbstractTableModel tableModel) {
         this.usersList.setModel(tableModel);
-        this.usersList.removeColumn(this.usersList.getColumn("ID"));
-        this.usersList.removeColumn(this.usersList.getColumn("Identifiant"));
-        this.usersList.removeColumn(this.usersList.getColumn("Password"));
+        this.usersList.removeColumn(this.usersList.getColumn("ID")); // Cache la colonne ID
+        this.usersList.removeColumn(this.usersList.getColumn("Identifiant")); // Cache la colonne Identifiant
+        this.usersList.removeColumn(this.usersList.getColumn("Password")); // Cache la colonne Password
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

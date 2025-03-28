@@ -4,8 +4,10 @@
  */
 package view;
 
+import DAO.UtilisateurDAO;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.Connection;
 
 /**
  *
@@ -17,6 +19,7 @@ public class ModifDialog extends javax.swing.JDialog {
      * Creates new form ModifDialog
      */
     private PropertyChangeSupport listeners = new PropertyChangeSupport(this);
+   
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
         this.listeners.addPropertyChangeListener(l);
@@ -46,8 +49,6 @@ public class ModifDialog extends javax.swing.JDialog {
         textFieldMail = new javax.swing.JTextField();
         textFieldIdentifiant = new javax.swing.JTextField();
         cancelButton = new javax.swing.JButton();
-        passwordLabel1 = new javax.swing.JLabel();
-        comboBoxRole = new javax.swing.JComboBox<>();
         updateButton1 = new javax.swing.JButton();
         textFieldPassword = new javax.swing.JPasswordField();
 
@@ -70,15 +71,6 @@ public class ModifDialog extends javax.swing.JDialog {
             }
         });
 
-        passwordLabel1.setText("Rôle :");
-
-        comboBoxRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Dev", "ADSR", "Concept Appli", "DevOps", "DevWebFullstack", "Inge IA", "Chefp Multimedia", "Chefp General", "Directeur Projet" }));
-        comboBoxRole.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxRoleActionPerformed(evt);
-            }
-        });
-
         updateButton1.setText("Modifier");
         updateButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,32 +83,28 @@ public class ModifDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(256, 256, 256)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passwordLabel1)
                             .addComponent(prenomLabel)
                             .addComponent(mailLabel)
                             .addComponent(nomLabel)
                             .addComponent(identifiantLabel)
                             .addComponent(passwordLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBoxRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textFieldName)
-                                .addComponent(textFieldPrenom)
-                                .addComponent(textFieldMail)
-                                .addComponent(textFieldIdentifiant)
-                                .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textFieldName)
+                            .addComponent(textFieldPrenom)
+                            .addComponent(textFieldMail)
+                            .addComponent(textFieldIdentifiant)
+                            .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(410, 410, 410)
                         .addComponent(updateButton1)
-                        .addGap(84, 84, 84)
-                        .addComponent(cancelButton)
-                        .addGap(87, 87, 87)))
-                .addGap(258, 258, 258))
+                        .addGap(93, 93, 93)
+                        .addComponent(cancelButton)))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,25 +129,17 @@ public class ModifDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(121, 121, 121)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton)
-                    .addComponent(updateButton1))
-                .addGap(104, 104, 104))
+                    .addComponent(updateButton1)
+                    .addComponent(cancelButton))
+                .addGap(187, 187, 187))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cancelButton, comboBoxRole, identifiantLabel, mailLabel, nomLabel, passwordLabel, passwordLabel1, prenomLabel, textFieldIdentifiant, textFieldMail, textFieldName, textFieldPassword, textFieldPrenom, updateButton1});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cancelButton, identifiantLabel, mailLabel, nomLabel, passwordLabel, prenomLabel, textFieldIdentifiant, textFieldMail, textFieldName, textFieldPassword, textFieldPrenom, updateButton1});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void comboBoxRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxRoleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxRoleActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         dispose();
@@ -213,12 +193,10 @@ public class ModifDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
-    private javax.swing.JComboBox<String> comboBoxRole;
     private javax.swing.JLabel identifiantLabel;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JLabel nomLabel;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JLabel passwordLabel1;
     private javax.swing.JLabel prenomLabel;
     private javax.swing.JTextField textFieldIdentifiant;
     private javax.swing.JTextField textFieldMail;

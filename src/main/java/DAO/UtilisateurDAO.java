@@ -52,15 +52,13 @@ public class UtilisateurDAO {
 
     public User create(User utilisateur) { // Création de l'utilisateur
         try {
-            String sql = "INSERT INTO utilisateur (ID, NOM, PRENOM, ADRESSE_MAIL, IDENTIFIANT, MOT_DE_PASSE) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO utilisateur (NOM, PRENOM, ADRESSE_MAIL, IDENTIFIANT, MOT_DE_PASSE) VALUES (?,?,?,?,?)";
             PreparedStatement ps = this.connexion.prepareStatement(sql);
-            ps.setInt(1, utilisateur.getId());
-            ps.setString(2, utilisateur.getNom());
-            ps.setString(3, utilisateur.getPrenom());
-            ps.setString(4, utilisateur.getMail());
-            ps.setString(5, utilisateur.getIdentifiant());
-            ps.setString(6, utilisateur.getPassword());
-            ps.executeUpdate();
+            ps.setString(1, utilisateur.getNom());
+            ps.setString(2, utilisateur.getPrenom());
+            ps.setString(3, utilisateur.getMail());
+            ps.setString(4, utilisateur.getIdentifiant());
+            ps.setString(5, utilisateur.getPassword());
             return utilisateur;
         } catch (Exception e) {
             e.printStackTrace();
