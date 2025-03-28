@@ -52,9 +52,8 @@ public class UtilisateurDAO {
 
     public User create(User utilisateur) { // Création de l'utilisateur
         try {
-            Connection con = this.connexion;
             String sql = "INSERT INTO utilisateur (ID, NOM, PRENOM, ADRESSE_MAIL, IDENTIFIANT, MOT_DE_PASSE) VALUES (?,?,?,?,?,?)";
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = this.connexion.prepareStatement(sql);
             ps.setInt(1, utilisateur.getId());
             ps.setString(2, utilisateur.getNom());
             ps.setString(3, utilisateur.getPrenom());
@@ -72,9 +71,8 @@ public class UtilisateurDAO {
 
     public User update(User utilisateur) { // Modification de l'utilisateur
         try {
-            Connection connection = this.connexion;
             String sql = "UPDATE utilisateur set ID = ?, NOM = ?, PRENOM = ?, ADRESSE_MAIL = ?, IDENTIFIANT = ?, MOT_DE_PASSE = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = this.connexion.prepareStatement(sql);
             ps.setInt(1, utilisateur.getId());
             ps.setString(2, utilisateur.getNom());
             ps.setString(3, utilisateur.getPrenom());
