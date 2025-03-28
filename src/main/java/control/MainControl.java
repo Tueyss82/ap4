@@ -12,6 +12,9 @@ import view.ModifDialog;
 import view.AjoutDialog;
 import view.DeleteDialog;
 
+
+
+
 /**
  *
  * @author m.perot
@@ -38,6 +41,7 @@ public class MainControl implements PropertyChangeListener {
 
         this.deleteDialog = new DeleteDialog(this.view, true);
         this.deleteDialog.addPropertyChangeListener(this);
+
 
     }
 

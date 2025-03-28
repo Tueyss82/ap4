@@ -67,6 +67,12 @@ public class AjoutDialog extends javax.swing.JDialog {
 
         JNom.setText("Nom :");
 
+        JTextIdentifiant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextIdentifiantActionPerformed(evt);
+            }
+        });
+
         jPrenom.setText("Prenom :");
 
         jIdentifiant.setText("Identifiant : ");
@@ -168,7 +174,18 @@ public class AjoutDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextNomActionPerformed
 
     private void JAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAjouterActionPerformed
-        // TODO add your handling code here:
+       // Récpérer la valeurs des champs
+        String nom = jTextNom.getText();
+        String prenom = JTextPrenom.getText();
+        String identifiant =JTextIdentifiant.getText();
+        String password = jTextPassword.getText();
+        jComboRole.getSelectedItem();
+        
+        //System.out.println(jComboRole.getSelectedItem().toString()); 
+        
+        
+        
+        
     }//GEN-LAST:event_JAjouterActionPerformed
 
     private void jComboRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboRoleActionPerformed
@@ -186,6 +203,10 @@ public class AjoutDialog extends javax.swing.JDialog {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void JTextIdentifiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextIdentifiantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextIdentifiantActionPerformed
 
     /**
      * @param args the command line arguments
