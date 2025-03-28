@@ -35,7 +35,7 @@ public class MainControl implements PropertyChangeListener {
 
         this.modifDialog = new ModifDialog(this.view, true);
         this.modifDialog.addPropertyChangeListener(this);
-        
+
         this.deleteDialog = new DeleteDialog(this.view, true);
         this.deleteDialog.addPropertyChangeListener(this);
 
@@ -43,14 +43,21 @@ public class MainControl implements PropertyChangeListener {
 
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
-            case "modifUser":
-                this.modifDialog.setVisible(true);
-                break;
             case "ajoutUser":
                 this.ajoutDialog.setVisible(true);
                 break;
             case "deleteUser":
                 this.deleteDialog.setVisible(true);
+                break;
+            case "openModifDialog":
+                modifDialog.setId(this.view.getSelectedId());
+                modifDialog.setNom(this.view.getSelectedNom());
+                modifDialog.setPrenom(this.view.getSelectedPrenom());
+                modifDialog.setEmail(this.view.getSelectedEmail());
+                modifDialog.setIdentifiant(this.view.getSelectedIdentifiant());
+                modifDialog.setPassword(this.view.getSelectedPassword());
+
+                modifDialog.setVisible(true);
                 break;
 
         }

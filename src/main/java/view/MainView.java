@@ -16,6 +16,7 @@ import model.UserListModel;
 public class MainView extends javax.swing.JFrame {
 
     private PropertyChangeSupport listeners = new PropertyChangeSupport(this);
+    private UserListModel userData = new UserListModel();
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.listeners.addPropertyChangeListener(listener);
@@ -128,18 +129,16 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteUserActionPerformed
 
     private void modifUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifUserActionPerformed
-        listeners.firePropertyChange("modifUser", null, null);
+        listeners.firePropertyChange("openModifDialog", null, null);
     }//GEN-LAST:event_modifUserActionPerformed
 
     private void usersListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersListMouseClicked
-        
+
     }//GEN-LAST:event_usersListMouseClicked
 
     private void modifUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifUserMouseClicked
-        UserListModel selectedUserData = (UserListModel)usersList.getModel();
-        
-        int selectedRowIndex = usersList.getSelectedRow();
-        
+
+
     }//GEN-LAST:event_modifUserMouseClicked
 
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
@@ -148,6 +147,84 @@ public class MainView extends javax.swing.JFrame {
 
     public String message(String mess) {
         return mess;
+    }
+
+    public int getColumnIndex(String columnName) {
+        switch (columnName) {
+            case "ID":
+                return 0;
+            case "Nom":
+                return 1;
+            case "Prénom":
+                return 2;
+            case "Mail":
+                return 3;
+            case "Identifiant":
+                return 4;
+            case "Password":
+                return 5;
+
+        }
+        return 0;
+    }
+
+    public Object getSelectedId() {
+        int rowIndex = this.usersList.getSelectedRow();
+        int columnIndex = this.getColumnIndex("ID");
+        Object selectedUserId = this.userData.getValueAt(rowIndex, columnIndex);
+        System.out.println(selectedUserId);
+
+        return selectedUserId;
+    }
+
+    public String getSelectedNom() {
+        int rowIndex = this.usersList.getSelectedRow();
+        int columnIndex = this.getColumnIndex("Nom");
+        Object selectedUserName = this.userData.getValueAt(rowIndex, columnIndex);
+        System.out.println(selectedUserName);
+        System.out.println(columnIndex);
+
+        return String.valueOf(selectedUserName);
+    }
+
+    public String getSelectedPrenom() {
+        int rowIndex = this.usersList.getSelectedRow();
+        int columnIndex = this.getColumnIndex("Prénom");
+        Object selectedUserPrenom = this.userData.getValueAt(rowIndex, columnIndex);
+        System.out.println(selectedUserPrenom);
+        System.out.println(columnIndex);
+
+        return String.valueOf(selectedUserPrenom);
+    }
+
+    public String getSelectedEmail() {
+        int rowIndex = this.usersList.getSelectedRow();
+        int columnIndex = this.getColumnIndex("Mail");
+        Object selectedUserMail = this.userData.getValueAt(rowIndex, columnIndex);
+        System.out.println(selectedUserMail);
+        System.out.println(columnIndex);
+
+        return String.valueOf(selectedUserMail);
+    }
+
+    public String getSelectedIdentifiant() {
+        int rowIndex = this.usersList.getSelectedRow();
+        int columnIndex = this.getColumnIndex("Identifiant");
+        Object selectedUserIdentifiant = this.userData.getValueAt(rowIndex, columnIndex);
+        System.out.println(selectedUserIdentifiant);
+        System.out.println(columnIndex);
+
+        return String.valueOf(selectedUserIdentifiant);
+    }
+
+    public String getSelectedPassword() {
+        int rowIndex = this.usersList.getSelectedRow();
+        int columnIndex = this.getColumnIndex("Password");
+        Object selectedUserPassword = this.userData.getValueAt(rowIndex, columnIndex);
+        System.out.println(selectedUserPassword);
+        System.out.println(columnIndex);
+
+        return String.valueOf(selectedUserPassword);
     }
 
     public void setTableModel(AbstractTableModel tableModel) {

@@ -19,7 +19,6 @@ public class ModifDialog extends javax.swing.JDialog {
      * Creates new form ModifDialog
      */
     private PropertyChangeSupport listeners = new PropertyChangeSupport(this);
-   
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
         this.listeners.addPropertyChangeListener(l);
@@ -205,4 +204,29 @@ public class ModifDialog extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldPrenom;
     private javax.swing.JButton updateButton1;
     // End of variables declaration//GEN-END:variables
+
+    public void setId(Object selectedId) {
+        this.textFieldName.setText(String.valueOf(selectedId));
+    }
+
+    public void setNom(String selectedNom) {
+        this.textFieldName.setText(selectedNom);
+
+    }
+
+    public void setPrenom(String selectedPrenom) {
+        this.textFieldPrenom.setText(selectedPrenom);
+    }
+    
+    public void setEmail(String selectedMail) {
+        this.textFieldMail.setText(selectedMail);
+    }
+    
+    public void setIdentifiant(String selectedIdentifiant) {
+        this.textFieldIdentifiant.setText(selectedIdentifiant);
+    }
+    
+    public void setPassword(String selectedPassword) {
+        this.textFieldPassword.setText(selectedPassword);
+    }
 }
