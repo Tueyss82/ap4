@@ -39,6 +39,7 @@ public class UserListModel extends AbstractTableModel {
     }
     
     
+    
     public String getColumnName(int column) {
         return this.nomColumn[column];
     }
