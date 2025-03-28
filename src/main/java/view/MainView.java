@@ -40,6 +40,7 @@ public class MainView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         usersList = new javax.swing.JTable();
         btnValidModif = new javax.swing.JButton();
+        Ajout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +71,13 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
+        Ajout.setText("Ajouter");
+        Ajout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,6 +88,8 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap(261, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Ajout)
+                .addGap(42, 42, 42)
                 .addComponent(btnValidModif)
                 .addGap(158, 158, 158)
                 .addComponent(btnValidNouveau)
@@ -93,7 +103,8 @@ public class MainView extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnValidNouveau)
-                    .addComponent(btnValidModif))
+                    .addComponent(btnValidModif)
+                    .addComponent(Ajout))
                 .addContainerGap(157, Short.MAX_VALUE))
         );
 
@@ -108,6 +119,9 @@ public class MainView extends javax.swing.JFrame {
         listeners.firePropertyChange("modifUser", null, null);
     }//GEN-LAST:event_btnValidModifActionPerformed
 
+    private void AjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutActionPerformed
+        listeners.firePropertyChange("ajoutuser", null, null);    }//GEN-LAST:event_AjoutActionPerformed
+
     public String message(String mess) {
         return mess;
     }
@@ -118,6 +132,7 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Ajout;
     private javax.swing.JButton btnValidModif;
     private javax.swing.JButton btnValidNouveau;
     private javax.swing.JScrollPane jScrollPane1;
