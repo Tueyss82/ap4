@@ -53,7 +53,7 @@ public class UserListModel extends AbstractTableModel {
     
     public void update(int id, String nom, String prenom, String mail, String identifiant, String password) {
         this.userData.update(new User(id, nom, prenom, mail, identifiant, password));
-        fireTableDataChanged();
+        this.fireTableDataChanged();
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {

@@ -6,6 +6,7 @@ package control;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import javax.swing.table.DefaultTableModel;
 import model.UserListModel;
 import view.MainView;
 import view.ModifDialog;
@@ -71,6 +72,7 @@ public class MainControl implements PropertyChangeListener {
                         modifDialog.getEmail(),
                         modifDialog.getIdentifiant(),
                         modifDialog.getPassword());
+                
                 modifDialog.setVisible(false);
                 break;                        
             }

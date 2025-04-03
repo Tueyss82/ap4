@@ -29,7 +29,7 @@ public class UtilisateurDAO {
     public List<User> getAll() { // Récupère tout les utilisateurs
         try {
             List<User> utilisateur = new ArrayList<User>();
-            String query = "SELECT * FROM UTILISATEUR";
+            String query = "SELECT * FROM utilisateur";
             PreparedStatement ps = this.connexion.prepareStatement(query);
             ResultSet res = ps.executeQuery(query);
             while (res.next()) {
