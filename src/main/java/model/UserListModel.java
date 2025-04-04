@@ -6,7 +6,6 @@ package model;
 
 import DAO.UtilisateurDAO;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.AbstractTableModel;
 import view.MainView;
@@ -20,6 +19,7 @@ public class UserListModel extends AbstractTableModel {
     //Attributs
     private final String[] nomColumn = {"ID", "Nom", "Prénom", "Mail"};
     private ArrayList<Utilisateur> userList = new ArrayList<>();
+    
     private UtilisateurDAO connexionDao = new UtilisateurDAO();
     
     private final Connection connexion;
