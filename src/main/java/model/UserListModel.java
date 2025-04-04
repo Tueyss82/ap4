@@ -24,16 +24,7 @@ public class UserListModel extends AbstractTableModel {
     private final Connection connexion;
     private UtilisateurDAO userData = new UtilisateurDAO();
 
-    public UserListModel() {
-        //this.userList.add(new User(1, "SAGE", "Matéo", "mateo.sage@gmail.com", "", ""));
-        //this.userList.add(new User(2, "XIONG", "Teddy", "teddy.xiong@gmail.com", "", ""));
-        //this.userList.add(new User(3, "ZIMMERMANN", "Ethane", "ethane.zimmermann@gmail.com", "", ""));
-        //this.userList.add(new User(4, "MARQUEZ", "Paul", "paul.marquez@gmail.com", "", ""));
-        //this.userList.add(new User(5, "PINA", "Ronald", "ronald.pina@gmail.com", "", ""));
-        //this.userList.add(new User(6, "TALSEUM", "Eliaz", "eliaz.talseum@gmail.com", "", ""));
-        //this.userList.add(new User(7, "BASCK", "Emmanuel", "emmanuel.basck@gmail.com", "", ""));
-        //this.userList.add(new User(8, "CRANE", "Lewis", "lewis.crane@gmail.com", "", ""));
-        
+    public UserListModel() {      
         this.connexion = MySQLConnection.getConnexion();
         this.userList = this.userData.getAll();
         
@@ -53,6 +44,7 @@ public class UserListModel extends AbstractTableModel {
     
     public void update(int id, String nom, String prenom, String mail, String identifiant, String password) {
         this.userData.update(new User(id, nom, prenom, mail, identifiant, password));
+        this.userList = this.userData.getAll();
         this.fireTableDataChanged();
     }
 
