@@ -5,9 +5,8 @@
 package model;
 
 import DAO.UtilisateurDAO;
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.AbstractTableModel;
 import view.MainView;
 
@@ -18,18 +17,29 @@ import view.MainView;
 public class UserListModel extends AbstractTableModel {
 
     //Attributs
-    private final String[] nomColumn = {"ID", "Nom", "Prénom", "Mail", "Identifiant", "Password"};
-    private List<User> userList = new ArrayList<User>();
+    private final String[] nomColumn = {"ID", "Nom", "Prénom", "Mail"};
+    private ArrayList<Utilisateur> userList = new ArrayList<>();
+    
+    private UtilisateurDAO connexionDao = new UtilisateurDAO();
     
     private final Connection connexion;
     private UtilisateurDAO userData = new UtilisateurDAO();
+    private TableModelEvent newUtilisateur = new TableModelEvent(this); 
+         
 
     public UserListModel() {      
         this.connexion = MySQLConnection.getConnexion();
         this.userList = this.userData.getAll();
         
+        
     }
 
+    public void fireChangements(TableModelEvent e){
+        this.fireTableChanged(e);
+    }
+    
+    
+    
     public String getColumnName(int column) {
         return this.nomColumn[column];
     }
@@ -48,8 +58,13 @@ public class UserListModel extends AbstractTableModel {
         this.fireTableDataChanged();
     }
 
+    public void delete(int id){
+        this.userData.delete(this.userList.get(id));
+        this.userData.getAll();
+        this.fireTableDataChanged();
+    }
     public Object getValueAt(int rowIndex, int columnIndex) {
-        User i = userList.get(rowIndex);
+        Utilisateur i = userList.get(rowIndex);
         switch (columnIndex) {
             case 0:
                 return i.getId();
