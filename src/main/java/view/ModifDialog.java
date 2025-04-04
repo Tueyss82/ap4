@@ -132,6 +132,14 @@ public class ModifDialog extends javax.swing.JDialog {
                     .addComponent(prenomLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldMail)
+                    .addComponent(mailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldIdentifiant)
+                    .addComponent(identifiantLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(79, 79, 79)
@@ -207,6 +215,7 @@ public class ModifDialog extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldIdentifiant;
     private javax.swing.JTextField textFieldMail;
     private javax.swing.JTextField textFieldName;
+    private javax.swing.JPasswordField textFieldPassword;
     private javax.swing.JTextField textFieldPrenom;
     private javax.swing.JButton updateButton1;
     // End of variables declaration//GEN-END:variables
