@@ -130,63 +130,32 @@ public class MainView extends javax.swing.JFrame {
         return mess;
     }
 
-    public Object getSelectedId() {
-        int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = 0;
-        Object selectedUserId = this.userData.getValueAt(rowIndex, columnIndex);
-        System.out.println(selectedUserId);
-
-        return selectedUserId;
+    public int getSelectedId() { // Retourne l'id de l'utilisateur sélectionné (MODIF)
+        return (int) this.usersList.getModel().getValueAt(this.usersList.getSelectedRow(), 0);
     }
 
-    public String getSelectedNom() {
-        int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = 1;
-        Object selectedUserName = this.userData.getValueAt(rowIndex, columnIndex);
-        System.out.println(selectedUserName);
-        System.out.println(columnIndex);
-
-        return String.valueOf(selectedUserName);
+    public String getSelectedNom() { // Retourne le nom de l'utilisateur sélectionné (MODIF)
+        return (String) this.usersList.getModel().getValueAt(this.usersList.getSelectedRow(), 1);
     }
 
-    public String getSelectedPrenom() {
-        int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = 2;
-        Object selectedUserPrenom = this.userData.getValueAt(rowIndex, columnIndex);
-        System.out.println(selectedUserPrenom);
-        System.out.println(columnIndex);
+    public String getSelectedPrenom() { // Retourne le prénom de l'utilisateur sélectionné (MODIF)
+        return (String) this.usersList.getModel().getValueAt(this.usersList.getSelectedRow(), 2);
 
-        return String.valueOf(selectedUserPrenom);
     }
 
-    public String getSelectedEmail() {
-        int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = 3;
-        Object selectedUserMail = this.userData.getValueAt(rowIndex, columnIndex);
-        System.out.println(selectedUserMail);
-        System.out.println(columnIndex);
+    public String getSelectedEmail() { // Retourne le mail de l'utilisateur sélectionné (MODIF)
+        return (String) this.usersList.getModel().getValueAt(this.usersList.getSelectedRow(), 3);
 
-        return String.valueOf(selectedUserMail);
     }
 
-    public String getSelectedIdentifiant() {
-        int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = 4;
-        Object selectedUserIdentifiant = this.userData.getValueAt(rowIndex, columnIndex);
-        System.out.println(selectedUserIdentifiant);
-        System.out.println(columnIndex);
+    public String getSelectedIdentifiant() { // Retourne l'identifiant (pas l'id) de l'utilisateur sélectionné (MODIF)
+        return (String) this.usersList.getModel().getValueAt(this.usersList.getSelectedRow(), 4);
 
-        return String.valueOf(selectedUserIdentifiant);
     }
 
-    public String getSelectedPassword() {
-        int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = 5;
-        Object selectedUserPassword = this.userData.getValueAt(rowIndex, columnIndex);
-        System.out.println(selectedUserPassword);
-        System.out.println(columnIndex);
+    public String getSelectedPassword() { // Retourne le mot de passe de l'utilisateur sélectionné (MODIF)
+        return (String) this.usersList.getModel().getValueAt(this.usersList.getSelectedRow(), 5);
 
-        return String.valueOf(selectedUserPassword);
     }
 
     public void setTableModel(AbstractTableModel tableModel) {

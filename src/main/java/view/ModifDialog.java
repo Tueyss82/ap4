@@ -4,10 +4,9 @@
  */
 package view;
 
-import DAO.UtilisateurDAO;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.sql.Connection;
 import model.UserListModel;
 
 /**
@@ -15,7 +14,8 @@ import model.UserListModel;
  * @author m.perot
  */
 public class ModifDialog extends javax.swing.JDialog {
-
+    
+    private int id;
     /**
      * Creates new form ModifDialog
      */
@@ -51,8 +51,6 @@ public class ModifDialog extends javax.swing.JDialog {
         cancelButton = new javax.swing.JButton();
         updateButton1 = new javax.swing.JButton();
         textFieldPassword = new javax.swing.JPasswordField();
-        textFieldId = new javax.swing.JTextField();
-        idLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -80,11 +78,6 @@ public class ModifDialog extends javax.swing.JDialog {
             }
         });
 
-        textFieldId.setEnabled(false);
-
-        idLabel.setText("Id :");
-        idLabel.setEnabled(false);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,16 +91,14 @@ public class ModifDialog extends javax.swing.JDialog {
                             .addComponent(mailLabel)
                             .addComponent(nomLabel)
                             .addComponent(identifiantLabel)
-                            .addComponent(passwordLabel)
-                            .addComponent(idLabel))
+                            .addComponent(passwordLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(textFieldName)
                             .addComponent(textFieldPrenom)
                             .addComponent(textFieldMail)
                             .addComponent(textFieldIdentifiant)
-                            .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(410, 410, 410)
                         .addComponent(updateButton1)
@@ -118,11 +109,7 @@ public class ModifDialog extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -206,13 +193,11 @@ public class ModifDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
-    private javax.swing.JLabel idLabel;
     private javax.swing.JLabel identifiantLabel;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JLabel nomLabel;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel prenomLabel;
-    private javax.swing.JTextField textFieldId;
     private javax.swing.JTextField textFieldIdentifiant;
     private javax.swing.JTextField textFieldMail;
     private javax.swing.JTextField textFieldName;
@@ -221,12 +206,12 @@ public class ModifDialog extends javax.swing.JDialog {
     private javax.swing.JButton updateButton1;
     // End of variables declaration//GEN-END:variables
 
-    public void setId(Object selectedId) {
-        this.textFieldId.setText(String.valueOf(selectedId));
+    public void setId(Object id) {
+        this.id = (int)id;
     }
 
     public int getId() {
-        return Integer.parseInt(this.textFieldId.getText());
+        return this.id;
     }
 
     public void setNom(String selectedNom) {
