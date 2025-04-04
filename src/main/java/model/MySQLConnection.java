@@ -15,7 +15,7 @@ public class MySQLConnection {
     //private static final String url = "jdbc:mysql://localhost:3306/ap4usertable";
     //private static final String user = "root";
     //private static final String pass = "";
-    private static final String url = "jdbc:mysql://172.28.37.17:3306/ap4usertable"; // Remplacez l'adresse par celle de votre serveur pour l'épreuve.
+    private static final String url = "jdbc:mysql://localhost:3306/ap4usertable"; // Remplacez l'adresse par celle de votre serveur pour l'épreuve.
     private static final String user = "ap4bts2";                                    // Si c'est pas fait, créez un utilisateur sur phpmyadmin/adminer.
     private static final String pass = "Btssio82300";
     

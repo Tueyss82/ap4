@@ -6,7 +6,9 @@ package control;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.User;
 import model.UserListModel;
 import view.MainView;
 import view.ModifDialog;
@@ -26,7 +28,7 @@ public class MainControl implements PropertyChangeListener {
     private ModifDialog modifDialog;
     private UserListModel userListModel;
     private AjoutDialog ajoutDialog;
-    private DeleteDialog deleteDialog;
+//    private UtilisateurDAO 
 
     public MainControl(MainView v) {
         this.view = v;
@@ -40,10 +42,6 @@ public class MainControl implements PropertyChangeListener {
         this.modifDialog = new ModifDialog(this.view, true);
         this.modifDialog.addPropertyChangeListener(this);
 
-        this.deleteDialog = new DeleteDialog(this.view, true);
-        this.deleteDialog.addPropertyChangeListener(this);
-
-
     }
 
     public void propertyChange(PropertyChangeEvent evt) {
@@ -52,7 +50,8 @@ public class MainControl implements PropertyChangeListener {
                 this.ajoutDialog.setVisible(true);
                 break;
             case "deleteUser":
-                this.deleteDialog.setVisible(true);
+                int idUser = this.view.getSelectedId();
+                this.userListModel.delete(idUser);
                 break;
             case "openModifDialog":
                 modifDialog.setId(this.view.getSelectedId());
