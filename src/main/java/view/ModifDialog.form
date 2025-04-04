@@ -162,5 +162,6 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
+
   </SubComponents>
 </Form>

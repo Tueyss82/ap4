@@ -5,7 +5,6 @@
 package model;
 
 import DAO.UtilisateurDAO;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.TableModelEvent;
@@ -19,8 +18,9 @@ import view.MainView;
 public class UserListModel extends AbstractTableModel {
 
     //Attributs
-    private final String[] nomColumn = {"ID", "Nom", "Prénom", "Mail", "Identifiant", "Password"};
-    private List<User> userList = new ArrayList<User>();
+    private final String[] nomColumn = {"ID", "Nom", "Prénom", "Mail"};
+    private ArrayList<Utilisateur> userList = new ArrayList<>();
+    private UtilisateurDAO connexionDao = new UtilisateurDAO();
     
     private final Connection connexion;
     private UtilisateurDAO userData = new UtilisateurDAO();
@@ -64,7 +64,7 @@ public class UserListModel extends AbstractTableModel {
         this.fireTableDataChanged();
     }
     public Object getValueAt(int rowIndex, int columnIndex) {
-        User i = userList.get(rowIndex);
+        Utilisateur i = userList.get(rowIndex);
         switch (columnIndex) {
             case 0:
                 return i.getId();

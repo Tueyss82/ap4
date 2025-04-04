@@ -36,7 +36,7 @@ public class MainControl implements PropertyChangeListener {
         this.userListModel = new UserListModel();
         this.view.setTableModel(userListModel);
 
-        this.ajoutDialog = new AjoutDialog(this.view, true);
+        this.ajoutDialog=new AjoutDialog(this.view,true);
         this.ajoutDialog.addPropertyChangeListener(this);
 
         this.modifDialog = new ModifDialog(this.view, true);

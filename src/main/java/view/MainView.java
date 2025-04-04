@@ -48,6 +48,8 @@ public class MainView extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnValidNouveau.setText("Ajouter");
+        btnValidNouveau.addActionListener(new java.awt.event.ActionListener() {
         deleteUser.setText("Supprimer");
         deleteUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
