@@ -64,19 +64,9 @@ public class MainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        usersList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                usersListMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(usersList);
 
         modifUser.setText("Modifier");
-        modifUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modifUserMouseClicked(evt);
-            }
-        });
         modifUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifUserActionPerformed(evt);
@@ -132,15 +122,6 @@ public class MainView extends javax.swing.JFrame {
         listeners.firePropertyChange("openModifDialog", null, null);
     }//GEN-LAST:event_modifUserActionPerformed
 
-    private void usersListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersListMouseClicked
-
-    }//GEN-LAST:event_usersListMouseClicked
-
-    private void modifUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifUserMouseClicked
-
-
-    }//GEN-LAST:event_modifUserMouseClicked
-
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
         listeners.firePropertyChange("ajoutUser", null, null);
     }//GEN-LAST:event_addUserActionPerformed
@@ -149,28 +130,9 @@ public class MainView extends javax.swing.JFrame {
         return mess;
     }
 
-    public int getColumnIndex(String columnName) {
-        switch (columnName) {
-            case "ID":
-                return 0;
-            case "Nom":
-                return 1;
-            case "Prénom":
-                return 2;
-            case "Mail":
-                return 3;
-            case "Identifiant":
-                return 4;
-            case "Password":
-                return 5;
-
-        }
-        return 0;
-    }
-
     public Object getSelectedId() {
         int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = this.getColumnIndex("ID");
+        int columnIndex = 0;
         Object selectedUserId = this.userData.getValueAt(rowIndex, columnIndex);
         System.out.println(selectedUserId);
 
@@ -179,7 +141,7 @@ public class MainView extends javax.swing.JFrame {
 
     public String getSelectedNom() {
         int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = this.getColumnIndex("Nom");
+        int columnIndex = 1;
         Object selectedUserName = this.userData.getValueAt(rowIndex, columnIndex);
         System.out.println(selectedUserName);
         System.out.println(columnIndex);
@@ -189,7 +151,7 @@ public class MainView extends javax.swing.JFrame {
 
     public String getSelectedPrenom() {
         int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = this.getColumnIndex("Prénom");
+        int columnIndex = 2;
         Object selectedUserPrenom = this.userData.getValueAt(rowIndex, columnIndex);
         System.out.println(selectedUserPrenom);
         System.out.println(columnIndex);
@@ -199,7 +161,7 @@ public class MainView extends javax.swing.JFrame {
 
     public String getSelectedEmail() {
         int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = this.getColumnIndex("Mail");
+        int columnIndex = 3;
         Object selectedUserMail = this.userData.getValueAt(rowIndex, columnIndex);
         System.out.println(selectedUserMail);
         System.out.println(columnIndex);
@@ -209,7 +171,7 @@ public class MainView extends javax.swing.JFrame {
 
     public String getSelectedIdentifiant() {
         int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = this.getColumnIndex("Identifiant");
+        int columnIndex = 4;
         Object selectedUserIdentifiant = this.userData.getValueAt(rowIndex, columnIndex);
         System.out.println(selectedUserIdentifiant);
         System.out.println(columnIndex);
@@ -219,7 +181,7 @@ public class MainView extends javax.swing.JFrame {
 
     public String getSelectedPassword() {
         int rowIndex = this.usersList.getSelectedRow();
-        int columnIndex = this.getColumnIndex("Password");
+        int columnIndex = 5;
         Object selectedUserPassword = this.userData.getValueAt(rowIndex, columnIndex);
         System.out.println(selectedUserPassword);
         System.out.println(columnIndex);
