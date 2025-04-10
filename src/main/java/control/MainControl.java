@@ -39,6 +39,47 @@ public class MainControl implements PropertyChangeListener {
         this.modifDialog = new ModifDialog(this.view, true);
         this.modifDialog.addPropertyChangeListener(this);
 
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.User;
+import model.UserListModel;
+import view.MainView;
+import view.ModifDialog;
+import view.AjoutDialog;
+import view.DeleteDialog;
+
+/**
+ *
+ * @author m.perot
+ */
+public class MainControl implements PropertyChangeListener {
+
+    private MainView view;
+    private ModifDialog modifDialog;
+    private UserListModel userListModel;
+    private AjoutDialog ajoutDialog;
+//    private UtilisateurDAO 
+
+    public MainControl(MainView v) {
+        this.view = v;
+        this.view.addPropertyChangeListener(this);
+        this.userListModel = new UserListModel();
+        this.view.setTableModel(userListModel);
+
+        this.ajoutDialog=new AjoutDialog(this.view,true);
+        this.ajoutDialog.addPropertyChangeListener(this);
+
+        this.modifDialog = new ModifDialog(this.view, true);
+        this.modifDialog.addPropertyChangeListener(this);
+
+=======
+        this.deleteDialog = new DeleteDialog(this.view, true);
+        this.deleteDialog.addPropertyChangeListener(this);
+
+=======
+        this.modifDialog = new ModifDialog(this.view, true);
+        this.modifDialog.addPropertyChangeListener(this);
     }
 
     public void propertyChange(PropertyChangeEvent evt) {
