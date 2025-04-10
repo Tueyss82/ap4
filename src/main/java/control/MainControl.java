@@ -14,6 +14,10 @@ import view.MainView;
 import view.ModifDialog;
 import view.AjoutDialog;
 import view.DeleteDialog;
+import view.AjoutDialog;
+
+
+
 
 /**
  *
@@ -39,6 +43,10 @@ public class MainControl implements PropertyChangeListener {
 
         this.modifDialog = new ModifDialog(this.view, true);
         this.modifDialog.addPropertyChangeListener(this);
+
+        this.deleteDialog = new DeleteDialog(this.view, true);
+        this.deleteDialog.addPropertyChangeListener(this);
+
 
         this.modifDialog = new ModifDialog(this.view, true);
         this.modifDialog.addPropertyChangeListener(this);

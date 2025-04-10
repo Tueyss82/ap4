@@ -46,13 +46,8 @@ public class MainView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-<<<<<<< HEAD
         deleteUser.setText("Supprimer");
         deleteUser.addActionListener(new java.awt.event.ActionListener() {
-=======
-        btnValidNouveau.setText("Ajouter");
-        btnValidNouveau.addActionListener(new java.awt.event.ActionListener() {
->>>>>>> 16c98d4 (create modal modif + cancel button working)
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteUserActionPerformed(evt);
             }
@@ -123,7 +118,6 @@ public class MainView extends javax.swing.JFrame {
         listeners.firePropertyChange("deleteUser", null, null);
     }//GEN-LAST:event_deleteUserActionPerformed
 
-<<<<<<< HEAD
     private void modifUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifUserActionPerformed
         listeners.firePropertyChange("openModifDialog", null, null);
     }//GEN-LAST:event_modifUserActionPerformed
@@ -131,11 +125,6 @@ public class MainView extends javax.swing.JFrame {
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
         listeners.firePropertyChange("ajoutUser", null, null);
     }//GEN-LAST:event_addUserActionPerformed
-=======
-    private void btnValidModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidModifActionPerformed
-        listeners.firePropertyChange("modifUser", null, null);
-    }//GEN-LAST:event_btnValidModifActionPerformed
->>>>>>> 16c98d4 (create modal modif + cancel button working)
 
     public String message(String mess) {
         return mess;
