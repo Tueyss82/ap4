@@ -46,6 +46,13 @@ public class UserListModel extends AbstractTableModel {
         return this.nomColumn.length;
     }
     
+    
+    public void create(String nom,String prenom, String mail, String identifiant, String password){
+         this.userData.create(new User(nom, prenom, mail, identifiant, password));// elle crée un nouvel objet User  
+        this.userList = this.userData.getAll(); // Elle met à jours la table.
+        this.fireTableDataChanged(); // Notifier l’interface graphique
+    }
+    
     public void update(int id, String nom, String prenom, String mail, String identifiant, String password) {
         this.userData.update(new User(id, nom, prenom, mail, identifiant, password));
         this.userList = this.userData.getAll();

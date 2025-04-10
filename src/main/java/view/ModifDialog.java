@@ -64,6 +64,12 @@ public class ModifDialog extends javax.swing.JDialog {
 
         mailLabel.setText("Adresse Mail :");
 
+        textFieldPrenom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldPrenomActionPerformed(evt);
+            }
+        });
+
         cancelButton.setText("Annuler");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +154,10 @@ public class ModifDialog extends javax.swing.JDialog {
     private void updateButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButton1ActionPerformed
         listeners.firePropertyChange("updateUser", null, null);
     }//GEN-LAST:event_updateButton1ActionPerformed
+
+    private void textFieldPrenomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPrenomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldPrenomActionPerformed
 
     /**
      * @param args the command line arguments

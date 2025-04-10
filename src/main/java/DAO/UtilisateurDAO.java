@@ -59,6 +59,7 @@ public class UtilisateurDAO {
             ps.setString(3, utilisateur.getMail());
             ps.setString(4, utilisateur.getIdentifiant());
             ps.setString(5, utilisateur.getPassword());
+            ps.execute();
             return utilisateur;
         } catch (Exception e) {
             e.printStackTrace();

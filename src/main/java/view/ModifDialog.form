@@ -121,6 +121,9 @@
     <Component class="javax.swing.JTextField" name="textFieldName">
     </Component>
     <Component class="javax.swing.JTextField" name="textFieldPrenom">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPrenomActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textFieldMail">
     </Component>

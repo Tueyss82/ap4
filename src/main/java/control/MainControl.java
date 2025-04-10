@@ -15,9 +15,6 @@ import view.ModifDialog;
 import view.AjoutDialog;
 import view.DeleteDialog;
 
-
-
-
 /**
  *
  * @author m.perot
@@ -53,7 +50,7 @@ public class MainControl implements PropertyChangeListener {
                 int idUser = this.view.getSelectedId();
                 this.userListModel.delete(idUser);
                 break;
-            case "openModifDialog":
+            case "openModifDialog": // Afficher l'utilisateur 
                 modifDialog.setId(this.view.getSelectedId());
                 modifDialog.setNom(this.view.getSelectedNom());
                 modifDialog.setPrenom(this.view.getSelectedPrenom());
@@ -71,11 +68,22 @@ public class MainControl implements PropertyChangeListener {
                         modifDialog.getEmail(),
                         modifDialog.getIdentifiant(),
                         modifDialog.getPassword());
-                
+
                 modifDialog.setVisible(false);
-                break;                        
-            }
+                break;
+
+            case "validNewUser":
+                userListModel.create(
+                 ajoutDialog.getNom(),
+                 ajoutDialog.getPrenom(),
+                 ajoutDialog.getEmail(),
+                 ajoutDialog.getIdentifiant(),
+                 ajoutDialog.getPassword()
+                );
+
+                ajoutDialog.setVisible(false);
+
+                break;
         }
     }
-
-
+}

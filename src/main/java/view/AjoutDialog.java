@@ -7,7 +7,6 @@ package view;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-
 /**
  *
  * @author t.combarieu
@@ -45,10 +44,10 @@ public class AjoutDialog extends javax.swing.JDialog {
         jIdentifiant = new javax.swing.JLabel();
         JTextPrenom = new javax.swing.JTextField();
         jPassword = new javax.swing.JLabel();
-        JRole = new javax.swing.JLabel();
-        jComboRole = new javax.swing.JComboBox<>();
         jTextPassword = new javax.swing.JPasswordField();
         cancelButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jMail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -85,15 +84,6 @@ public class AjoutDialog extends javax.swing.JDialog {
 
         jPassword.setText("Mot de passe :");
 
-        JRole.setText("Role : ");
-
-        jComboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Dev", "ADSR", "Concept Appli", "DevOps", "DevWebFullstack", "Inge IA", "Chefp Multimedia", "Chefp General", "Directeur Projet" }));
-        jComboRole.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboRoleActionPerformed(evt);
-            }
-        });
-
         jTextPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextPasswordActionPerformed(evt);
@@ -107,6 +97,14 @@ public class AjoutDialog extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setText("Adresse Mail :");
+
+        jMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMailActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,26 +113,26 @@ public class AjoutDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(JNom)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPassword)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1)
                                 .addComponent(jPrenom)
-                                .addComponent(jIdentifiant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(JRole))
-                        .addGap(37, 37, 37)
+                                .addComponent(JNom)
+                                .addComponent(jIdentifiant)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(JTextPrenom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                            .addComponent(JTextIdentifiant, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextNom, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboRole, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jMail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JTextIdentifiant)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(264, 264, 264)
                         .addComponent(JAjouter)
                         .addGap(43, 43, 43)
                         .addComponent(cancelButton)))
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,23 +145,23 @@ public class AjoutDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPrenom)
                     .addComponent(JTextPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jIdentifiant)
                     .addComponent(JTextIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPassword)
                     .addComponent(jTextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JRole)
-                    .addComponent(jComboRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
+                .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JAjouter)
                     .addComponent(cancelButton))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,23 +172,17 @@ public class AjoutDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextNomActionPerformed
 
     private void JAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAjouterActionPerformed
-       // Récpérer la valeurs des champs
-        String nom = jTextNom.getText();
-        String prenom = JTextPrenom.getText();
-        String identifiant =JTextIdentifiant.getText();
-        String password = jTextPassword.getText();
-        jComboRole.getSelectedItem();
-        
-        //System.out.println(jComboRole.getSelectedItem().toString()); 
-        
-        
-        
-        
-    }//GEN-LAST:event_JAjouterActionPerformed
 
-    private void jComboRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboRoleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboRoleActionPerformed
+        listeners.firePropertyChange("validNewUser", null, null);
+
+        // Récpérer la valeurs des champs
+        //String nom = jTextNom.getText();
+        //String prenom = JTextPrenom.getText();
+        //String mail = jMail.getText();
+        //String identifiant = JTextIdentifiant.getText();
+        //String password = jTextPassword.getText();
+
+    }//GEN-LAST:event_JAjouterActionPerformed
 
     private void jTextPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPasswordActionPerformed
         // TODO add your handling code here:
@@ -207,6 +199,10 @@ public class AjoutDialog extends javax.swing.JDialog {
     private void JTextIdentifiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextIdentifiantActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTextIdentifiantActionPerformed
+
+    private void jMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,15 +249,35 @@ public class AjoutDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JAjouter;
     private javax.swing.JLabel JNom;
-    private javax.swing.JLabel JRole;
     private javax.swing.JTextField JTextIdentifiant;
     private javax.swing.JTextField JTextPrenom;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JComboBox<String> jComboRole;
     private javax.swing.JLabel jIdentifiant;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jMail;
     private javax.swing.JLabel jPassword;
     private javax.swing.JLabel jPrenom;
     private javax.swing.JTextField jTextNom;
     private javax.swing.JPasswordField jTextPassword;
     // End of variables declaration//GEN-END:variables
+
+    public String getNom() {
+        return this.jTextNom.getText();
+    }
+
+    public String getPrenom() {
+        return this.JTextPrenom.getText();
+    }
+
+    public String getEmail() {
+        return this.jMail.getText();
+    }
+
+    public String getIdentifiant() {
+        return this.JTextIdentifiant.getText();
+    }
+
+    public String getPassword() {
+        return this.jTextPassword.getText();
+    }
 }

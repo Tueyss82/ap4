@@ -17,6 +17,15 @@ public class User {
     private String identifiant;
     private String password;
 
+    public User(String nom, String prenom, String email, String identifiant, String password) {
+
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.identifiant = identifiant;
+        this.password = password;
+    }
+
     public User(int id, String nom, String prenom, String email, String identifiant, String password) {
         this.id = id;
         this.nom = nom;
@@ -29,15 +38,15 @@ public class User {
     public int getId() {
         return this.id;
     }
-    
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getNom() {
         return this.nom;
     }
-    
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -45,7 +54,7 @@ public class User {
     public String getMail() {
         return this.email;
     }
-    
+
     public void setMail(String mail) {
         this.email = mail;
     }
@@ -53,7 +62,7 @@ public class User {
     public String getPrenom() {
         return this.prenom;
     }
-    
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
@@ -61,7 +70,7 @@ public class User {
     public String getIdentifiant() {
         return this.identifiant;
     }
-    
+
     public void setIdentifiant(String identifiant) {
         this.identifiant = identifiant;
     }
@@ -69,7 +78,7 @@ public class User {
     public String getPassword() {
         return this.password;
     }
-    
+
     public void setPassword(String password) {
         this.password = password;
     }
