@@ -87,18 +87,16 @@ public class UtilisateurDAO {
         }
     }
 
-    public User delete(User utilisateur) { // Suppression de l'utilisateur
+    public void delete(int idUser) { // Suppression de l'utilisateur
         try {
             Connection connection = this.connexion;
             String sql = "DELETE FROM utilisateur WHERE ID = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);;
-            ps.setInt(1, utilisateur.getId());
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, idUser);
             ps.executeUpdate();
-            return utilisateur;
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "DB : Erreur lors de la suppression de l'utilisateur");
-            return utilisateur;
         }
     }
 }

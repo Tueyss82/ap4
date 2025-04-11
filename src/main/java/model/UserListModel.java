@@ -60,8 +60,8 @@ public class UserListModel extends AbstractTableModel {
     }
 
     public void delete(int id){
-        this.userData.delete(this.userList.get(id));
-        this.userData.getAll();
+        this.userData.delete(id);
+        this.userList = this.userData.getAll();
         this.fireTableDataChanged();
     }
     public Object getValueAt(int rowIndex, int columnIndex) {
