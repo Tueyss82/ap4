@@ -36,13 +36,18 @@
                               <Component id="jIdentifiant" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="JTextPrenom" alignment="0" pref="241" max="32767" attributes="0"/>
                           <Component id="jTextNom" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextIdentifiant" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextMail" max="32767" attributes="0"/>
                           <Component id="jTextPassword" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jMail" alignment="0" max="32767" attributes="0"/>
-                          <Component id="JTextIdentifiant" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="boutonDeMaskPassword" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="boutonDeMaskIdentifiant1" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -52,7 +57,7 @@
                       <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="291" max="32767" attributes="0"/>
+              <EmptySpace pref="246" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,16 +77,18 @@
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jMail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextMail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jIdentifiant" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JTextIdentifiant" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="boutonDeMaskIdentifiant1" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="jTextIdentifiant" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="boutonDeMaskPassword" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jTextPassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
@@ -113,11 +120,6 @@
         <Property name="text" type="java.lang.String" value="Nom :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="JTextIdentifiant">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTextIdentifiantActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jPrenom">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prenom :"/>
@@ -138,9 +140,12 @@
         <Property name="text" type="java.lang.String" value="Mot de passe :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jTextPassword">
+    <Component class="javax.swing.JPasswordField" name="jTextIdentifiant">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextPasswordActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextIdentifiantActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="cancelButton">
@@ -156,9 +161,30 @@
         <Property name="text" type="java.lang.String" value="Adresse Mail :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jMail">
+    <Component class="javax.swing.JButton" name="boutonDeMaskPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="boutonDeMaskPassword"/>
+      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMailActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonDeMaskPasswordActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="boutonDeMaskIdentifiant1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="boutonDeMaskIdentifiant"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonDeMaskIdentifiant1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextMail">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextMailActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jTextPassword">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextPasswordActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

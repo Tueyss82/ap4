@@ -6,6 +6,7 @@ package view;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,15 +40,17 @@ public class AjoutDialog extends javax.swing.JDialog {
         JAjouter = new javax.swing.JButton();
         jTextNom = new javax.swing.JTextField();
         JNom = new javax.swing.JLabel();
-        JTextIdentifiant = new javax.swing.JTextField();
         jPrenom = new javax.swing.JLabel();
         jIdentifiant = new javax.swing.JLabel();
         JTextPrenom = new javax.swing.JTextField();
         jPassword = new javax.swing.JLabel();
-        jTextPassword = new javax.swing.JPasswordField();
+        jTextIdentifiant = new javax.swing.JPasswordField();
         cancelButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jMail = new javax.swing.JTextField();
+        boutonDeMaskPassword = new javax.swing.JButton();
+        boutonDeMaskIdentifiant1 = new javax.swing.JButton();
+        jTextMail = new javax.swing.JTextField();
+        jTextPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,12 +69,6 @@ public class AjoutDialog extends javax.swing.JDialog {
 
         JNom.setText("Nom :");
 
-        JTextIdentifiant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextIdentifiantActionPerformed(evt);
-            }
-        });
-
         jPrenom.setText("Prenom :");
 
         jIdentifiant.setText("Identifiant : ");
@@ -84,9 +81,10 @@ public class AjoutDialog extends javax.swing.JDialog {
 
         jPassword.setText("Mot de passe :");
 
-        jTextPassword.addActionListener(new java.awt.event.ActionListener() {
+        jTextIdentifiant.setToolTipText("");
+        jTextIdentifiant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextPasswordActionPerformed(evt);
+                jTextIdentifiantActionPerformed(evt);
             }
         });
 
@@ -99,9 +97,29 @@ public class AjoutDialog extends javax.swing.JDialog {
 
         jLabel1.setText("Adresse Mail :");
 
-        jMail.addActionListener(new java.awt.event.ActionListener() {
+        boutonDeMaskPassword.setText("boutonDeMaskPassword");
+        boutonDeMaskPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMailActionPerformed(evt);
+                boutonDeMaskPasswordActionPerformed(evt);
+            }
+        });
+
+        boutonDeMaskIdentifiant1.setText("boutonDeMaskIdentifiant");
+        boutonDeMaskIdentifiant1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonDeMaskIdentifiant1ActionPerformed(evt);
+            }
+        });
+
+        jTextMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextMailActionPerformed(evt);
+            }
+        });
+
+        jTextPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextPasswordActionPerformed(evt);
             }
         });
 
@@ -124,15 +142,19 @@ public class AjoutDialog extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(JTextPrenom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                             .addComponent(jTextNom, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jMail, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JTextIdentifiant)))
+                            .addComponent(jTextIdentifiant, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextMail)
+                            .addComponent(jTextPassword, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boutonDeMaskPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boutonDeMaskIdentifiant1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(264, 264, 264)
                         .addComponent(JAjouter)
                         .addGap(43, 43, 43)
                         .addComponent(cancelButton)))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,14 +170,16 @@ public class AjoutDialog extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jIdentifiant)
-                    .addComponent(JTextIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boutonDeMaskIdentifiant1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPassword)
+                    .addComponent(boutonDeMaskPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -172,21 +196,64 @@ public class AjoutDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextNomActionPerformed
 
     private void JAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAjouterActionPerformed
+        String textPrenom = this.getPrenom();
+        String textNom = this.getNom();
+        String textEmail = this.getEmail();
+        String textIdentifiant = this.getIdentifiant();
+        String textPassword = this.getPassword();
 
-        listeners.firePropertyChange("validNewUser", null, null);
+        String regexNomPrenom = "^[A-Z][a-zéèêëàâäïîç\\-']{1,}$";
+        String regexEmail = "^[\\w.-]+@[\\w.-]+\\.\\w{2,}$";
+        String regexIdentifiant = "^[a-zA-Z0-9]{4,15}$";
+        String regexMotDePasse = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$";
 
-        // Récpérer la valeurs des champs
-        //String nom = jTextNom.getText();
-        //String prenom = JTextPrenom.getText();
-        //String mail = jMail.getText();
-        //String identifiant = JTextIdentifiant.getText();
-        //String password = jTextPassword.getText();
+        if (textPrenom.isEmpty() && textNom.isEmpty() && textEmail.isEmpty() && textIdentifiant.isEmpty() && textPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs de saisie");
+            return;
+
+        } else if (textPrenom.isEmpty() || textNom.isEmpty() || textEmail.isEmpty() || textIdentifiant.isEmpty() || textPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vous avez oublié de renseigner une de vos informations");
+            return;
+            
+        } else if (!textNom.matches(regexNomPrenom) && textNom.length() < 2 ) {
+            JOptionPane.showMessageDialog(null, "Nom invalide. Il doit commencer par une majuscule et ne contenir que des lettres.");
+            return;
+        }
+        
+         else if(!textPrenom.matches(regexNomPrenom) && textNom.length() < 2 ) {
+            JOptionPane.showMessageDialog(null, "Prénom invalide. Il doit commencer par une majuscule et ne contenir que des lettres.");
+            return;
+        }
+        
+        else if (!textEmail.matches(regexEmail)) {
+            JOptionPane.showMessageDialog(null, "Email invalide. Format attendu : exemple@domaine.com");
+            return;
+        }
+
+        else if (!textIdentifiant.matches(regexIdentifiant)) {
+                JOptionPane.showMessageDialog(null, "Identifiant invalide. Il doit être alphanumérique (4 à 15 caractères).");
+                return;
+            }
+
+        else if (!textPassword.matches(regexMotDePasse)) {
+                JOptionPane.showMessageDialog(null, "Mot de passe invalide. Il doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.");
+                return;
+            }
+
+            listeners.firePropertyChange("validNewUser", null, null);
+
+            // Récpérer la valeurs des champs
+            //String nom = jTextNom.getText();
+            //String prenom = JTextPrenom.getText();
+            //String mail = jMail.getText();
+            //String identifiant = JTextIdentifiant.getText();
+            //String password = jTextPassword.getText();
 
     }//GEN-LAST:event_JAjouterActionPerformed
 
-    private void jTextPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPasswordActionPerformed
+    private void jTextIdentifiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextIdentifiantActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextPasswordActionPerformed
+    }//GEN-LAST:event_jTextIdentifiantActionPerformed
 
     private void JTextPrenomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextPrenomActionPerformed
         // TODO add your handling code here:
@@ -196,13 +263,21 @@ public class AjoutDialog extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void JTextIdentifiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextIdentifiantActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTextIdentifiantActionPerformed
+    private void boutonDeMaskPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeMaskPasswordActionPerformed
+        
+    }//GEN-LAST:event_boutonDeMaskPasswordActionPerformed
 
-    private void jMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMailActionPerformed
+    private void boutonDeMaskIdentifiant1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeMaskIdentifiant1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMailActionPerformed
+    }//GEN-LAST:event_boutonDeMaskIdentifiant1ActionPerformed
+
+    private void jTextMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextMailActionPerformed
+
+    private void jTextPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,14 +324,16 @@ public class AjoutDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JAjouter;
     private javax.swing.JLabel JNom;
-    private javax.swing.JTextField JTextIdentifiant;
     private javax.swing.JTextField JTextPrenom;
+    private javax.swing.JButton boutonDeMaskIdentifiant1;
+    private javax.swing.JButton boutonDeMaskPassword;
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jIdentifiant;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jMail;
     private javax.swing.JLabel jPassword;
     private javax.swing.JLabel jPrenom;
+    private javax.swing.JPasswordField jTextIdentifiant;
+    private javax.swing.JTextField jTextMail;
     private javax.swing.JTextField jTextNom;
     private javax.swing.JPasswordField jTextPassword;
     // End of variables declaration//GEN-END:variables
@@ -270,22 +347,23 @@ public class AjoutDialog extends javax.swing.JDialog {
     }
 
     public String getEmail() {
-        return this.jMail.getText();
+        return this.jTextIdentifiant.getText();
     }
 
     public String getIdentifiant() {
-        return this.JTextIdentifiant.getText();
+        return this.jTextIdentifiant.getText();
     }
 
     public String getPassword() {
-        return this.jTextPassword.getText();
+        return this.jTextIdentifiant.getText();
     }
-    
-    public void setDefaultTextfieldData(){
+
+    public void setDefaultTextfieldData() {
         this.jTextNom.setText("");
         this.JTextPrenom.setText("");
-        this.jMail.setText("");
-        this.JTextIdentifiant.setText("");
-        this.jTextPassword.setText("");
+        this.jTextIdentifiant.setText("");
+        this.jTextIdentifiant.setText("");
+        this.jTextIdentifiant.setText("");
+
     }
 }
