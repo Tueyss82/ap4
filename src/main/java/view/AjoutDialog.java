@@ -47,10 +47,9 @@ public class AjoutDialog extends javax.swing.JDialog {
         jTextIdentifiant = new javax.swing.JPasswordField();
         cancelButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        boutonDeMaskPassword = new javax.swing.JButton();
-        boutonDeMaskIdentifiant1 = new javax.swing.JButton();
         jTextMail = new javax.swing.JTextField();
         jTextPassword = new javax.swing.JPasswordField();
+        jCheckBoxUnHide = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -97,20 +96,6 @@ public class AjoutDialog extends javax.swing.JDialog {
 
         jLabel1.setText("Adresse Mail :");
 
-        boutonDeMaskPassword.setText("boutonDeMaskPassword");
-        boutonDeMaskPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boutonDeMaskPasswordActionPerformed(evt);
-            }
-        });
-
-        boutonDeMaskIdentifiant1.setText("boutonDeMaskIdentifiant");
-        boutonDeMaskIdentifiant1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boutonDeMaskIdentifiant1ActionPerformed(evt);
-            }
-        });
-
         jTextMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextMailActionPerformed(evt);
@@ -120,6 +105,12 @@ public class AjoutDialog extends javax.swing.JDialog {
         jTextPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextPasswordActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxUnHide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxUnHideActionPerformed(evt);
             }
         });
 
@@ -145,16 +136,14 @@ public class AjoutDialog extends javax.swing.JDialog {
                             .addComponent(jTextIdentifiant, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextMail)
                             .addComponent(jTextPassword, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(56, 56, 56)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(boutonDeMaskPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boutonDeMaskIdentifiant1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBoxUnHide))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(264, 264, 264)
                         .addComponent(JAjouter)
                         .addGap(43, 43, 43)
                         .addComponent(cancelButton)))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,13 +163,12 @@ public class AjoutDialog extends javax.swing.JDialog {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jIdentifiant)
-                    .addComponent(boutonDeMaskIdentifiant1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPassword)
-                    .addComponent(boutonDeMaskPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBoxUnHide))
                 .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JAjouter)
@@ -194,7 +182,7 @@ public class AjoutDialog extends javax.swing.JDialog {
     private void jTextNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNomActionPerformed
-
+    
     private void JAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAjouterActionPerformed
         String textPrenom = this.getPrenom();
         String textNom = this.getNom();
@@ -204,9 +192,8 @@ public class AjoutDialog extends javax.swing.JDialog {
 
         String regexNomPrenom = "^[A-Z][a-zéèêëàâäïîç\\-']{1,}$";
         String regexEmail = "^[\\w.-]+@[\\w.-]+\\.\\w{2,}$";
-        String regexIdentifiant = "^[a-zA-Z0-9]{4,15}$";
+        String regexIdentifiant = "^[a-zA-Z0-9]{8,15}$";
         String regexMotDePasse = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$";
-
         if (textPrenom.isEmpty() && textNom.isEmpty() && textEmail.isEmpty() && textIdentifiant.isEmpty() && textPassword.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs de saisie");
             return;
@@ -214,40 +201,32 @@ public class AjoutDialog extends javax.swing.JDialog {
         } else if (textPrenom.isEmpty() || textNom.isEmpty() || textEmail.isEmpty() || textIdentifiant.isEmpty() || textPassword.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vous avez oublié de renseigner une de vos informations");
             return;
-            
-        } else if (!textNom.matches(regexNomPrenom) && textNom.length() < 2 ) {
-            JOptionPane.showMessageDialog(null, "Nom invalide. Il doit commencer par une majuscule et ne contenir que des lettres.");
+
+        } else if (!textNom.matches(regexEmail)) {
+            JOptionPane.showMessageDialog(null, "Nom invalide");
             return;
-        }
-        
-         else if(!textPrenom.matches(regexNomPrenom) && textNom.length() < 2 ) {
-            JOptionPane.showMessageDialog(null, "Prénom invalide. Il doit commencer par une majuscule et ne contenir que des lettres.");
+        } else if (!textPrenom.matches(regexEmail)) {
+            JOptionPane.showMessageDialog(null, "Prénom invalide");
             return;
-        }
-        
-        else if (!textEmail.matches(regexEmail)) {
+        } else if (!textEmail.matches(regexEmail)) {
             JOptionPane.showMessageDialog(null, "Email invalide. Format attendu : exemple@domaine.com");
             return;
+        } else if (!textIdentifiant.matches(regexIdentifiant)) {
+            JOptionPane.showMessageDialog(null, "Identifiant invalide. Il doit être alphanumérique (4 à 15 caractères).");
+            return;
+        } else if (!textPassword.matches(regexMotDePasse)) {
+            JOptionPane.showMessageDialog(null, "Mot de passe invalide. Il doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.");
+            return;
         }
 
-        else if (!textIdentifiant.matches(regexIdentifiant)) {
-                JOptionPane.showMessageDialog(null, "Identifiant invalide. Il doit être alphanumérique (4 à 15 caractères).");
-                return;
-            }
+        listeners.firePropertyChange("validNewUser", null, null);
 
-        else if (!textPassword.matches(regexMotDePasse)) {
-                JOptionPane.showMessageDialog(null, "Mot de passe invalide. Il doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.");
-                return;
-            }
-
-            listeners.firePropertyChange("validNewUser", null, null);
-
-            // Récpérer la valeurs des champs
-            //String nom = jTextNom.getText();
-            //String prenom = JTextPrenom.getText();
-            //String mail = jMail.getText();
-            //String identifiant = JTextIdentifiant.getText();
-            //String password = jTextPassword.getText();
+        // Récpérer la valeurs des champs
+        //String nom = jTextNom.getText();
+        //String prenom = JTextPrenom.getText();
+        //String mail = jMail.getText();
+        //String identifiant = JTextIdentifiant.getText();
+        //String password = jTextPassword.getText();
 
     }//GEN-LAST:event_JAjouterActionPerformed
 
@@ -263,14 +242,6 @@ public class AjoutDialog extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void boutonDeMaskPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeMaskPasswordActionPerformed
-        
-    }//GEN-LAST:event_boutonDeMaskPasswordActionPerformed
-
-    private void boutonDeMaskIdentifiant1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDeMaskIdentifiant1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boutonDeMaskIdentifiant1ActionPerformed
-
     private void jTextMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextMailActionPerformed
@@ -278,6 +249,15 @@ public class AjoutDialog extends javax.swing.JDialog {
     private void jTextPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextPasswordActionPerformed
+
+    private void jCheckBoxUnHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxUnHideActionPerformed
+        if(jCheckBoxUnHide.isSelected()){
+            this.jTextPassword.setEchoChar((char) 0);
+        }
+        else {
+            this.jTextPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBoxUnHideActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,9 +305,8 @@ public class AjoutDialog extends javax.swing.JDialog {
     private javax.swing.JButton JAjouter;
     private javax.swing.JLabel JNom;
     private javax.swing.JTextField JTextPrenom;
-    private javax.swing.JButton boutonDeMaskIdentifiant1;
-    private javax.swing.JButton boutonDeMaskPassword;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JCheckBox jCheckBoxUnHide;
     private javax.swing.JLabel jIdentifiant;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jPassword;

@@ -157,7 +157,10 @@ public class MainView extends javax.swing.JFrame {
         return (String) this.usersList.getModel().getValueAt(this.usersList.getSelectedRow(), 5);
 
     }
-
+    public int getSelectedUser (){
+        return this.usersList.getSelectedRow();    
+    }
+    
     public void setTableModel(AbstractTableModel tableModel) {
         this.usersList.setModel(tableModel);
         this.usersList.removeColumn(this.usersList.getColumn("ID")); // Cache la colonne ID

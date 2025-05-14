@@ -61,7 +61,6 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="deleteUser">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter"/>
         <Property name="text" type="java.lang.String" value="Supprimer"/>
       </Properties>
       <Events>

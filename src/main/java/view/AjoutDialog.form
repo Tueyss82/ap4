@@ -44,11 +44,8 @@
                           <Component id="jTextMail" max="32767" attributes="0"/>
                           <Component id="jTextPassword" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="boutonDeMaskPassword" min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="boutonDeMaskIdentifiant1" min="-2" pref="24" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jCheckBoxUnHide" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
@@ -57,7 +54,7 @@
                       <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="246" max="32767" attributes="0"/>
+              <EmptySpace pref="283" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,14 +79,13 @@
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jIdentifiant" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="boutonDeMaskIdentifiant1" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jTextIdentifiant" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="boutonDeMaskPassword" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jTextPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBoxUnHide" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -161,22 +157,6 @@
         <Property name="text" type="java.lang.String" value="Adresse Mail :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="boutonDeMaskPassword">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="boutonDeMaskPassword"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonDeMaskPasswordActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="boutonDeMaskIdentifiant1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="boutonDeMaskIdentifiant"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonDeMaskIdentifiant1ActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="jTextMail">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextMailActionPerformed"/>
@@ -185,6 +165,11 @@
     <Component class="javax.swing.JPasswordField" name="jTextPassword">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextPasswordActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBoxUnHide">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxUnHideActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

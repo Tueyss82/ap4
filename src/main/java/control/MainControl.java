@@ -50,42 +50,52 @@ public class MainControl implements PropertyChangeListener {
                 break;
             case "deleteUser":
                 // Retourne l'option choisie par l'utilisateur en int.
-                int confirm = JOptionPane.showConfirmDialog(
-                        this.view,
-                        this.view.message("Voulez-vous supprimer cet utilisateur ?"),
-                        "Confirmation de suppression",
-                        JOptionPane.YES_NO_CANCEL_OPTION
-                );
 
-                // Si l'utilisateur à cliqué sur "YES" alors le delete s'effectue.
-                if (confirm == JOptionPane.YES_OPTION) {
-                    try {
-                        int selectedUserId = this.view.getSelectedId(); // Retourne l'utilisateur sélectionné dans la table.
-                        this.userListModel.delete(selectedUserId); // Supprime l'utilisateur selon l'id de l'utilisateur sélectionné.
+                if (this.view.getSelectedUser() == -1) {
+                    return;
+                } else {
+                    int confirm = JOptionPane.showConfirmDialog(
+                            this.view,
+                            this.view.message("Voulez-vous supprimer cet utilisateur ?"),
+                            "Confirmation de suppression",
+                            JOptionPane.YES_NO_CANCEL_OPTION
+                    );
 
-                        JOptionPane.showMessageDialog(this.view, "Utilisateur supprimé avec succès.");
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        JOptionPane.showMessageDialog(this.view, "Aucun utilisateur sélectionné.");
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(this.view, "Aucun utilisateur sélectionné");
+                    // Si l'utilisateur à cliqué sur "YES" alors le delete s'effectue.
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        try {
+                            int selectedUserId = this.view.getSelectedId(); // Retourne l'utilisateur sélectionné dans la table.
+                            this.userListModel.delete(selectedUserId); // Supprime l'utilisateur selon l'id de l'utilisateur sélectionné.
+
+                            JOptionPane.showMessageDialog(this.view, "Utilisateur supprimé avec succès.");
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            JOptionPane.showMessageDialog(this.view, "Aucun utilisateur sélectionné.");
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this.view, "Aucun utilisateur sélectionné");
+                        }
+                    } // Sinon la suppression est annulée.
+                    else {
+                        JOptionPane.showMessageDialog(this.view, "Suppression annulée.");
                     }
-                }
-                // Sinon la suppression est annulée.
-                else {
-                    JOptionPane.showMessageDialog(this.view, "Suppression annulée.");
                 }
                 break;
             case "openModifDialog": // Affiche le dialog avec toute les données de l'utilisateur dedans.
-                modifDialog.setId(this.view.getSelectedId());
-                modifDialog.setNom(this.view.getSelectedNom());
-                modifDialog.setPrenom(this.view.getSelectedPrenom());
-                modifDialog.setEmail(this.view.getSelectedEmail());
-                modifDialog.setIdentifiant(this.view.getSelectedIdentifiant());
-                modifDialog.setPassword(this.view.getSelectedPassword());
 
-                modifDialog.setVisible(true);
+                if (this.view.getSelectedUser() == -1) {
+                    return;
+                } else {
+                    modifDialog.setId(this.view.getSelectedId());
+                    modifDialog.setNom(this.view.getSelectedNom());
+                    modifDialog.setPrenom(this.view.getSelectedPrenom());
+                    modifDialog.setEmail(this.view.getSelectedEmail());
+                    modifDialog.setIdentifiant(this.view.getSelectedIdentifiant());
+                    modifDialog.setPassword(this.view.getSelectedPassword());
+                    modifDialog.setVisible(true);
+                }
+
                 break;
-            case "updateUser": // Effectue la méthode update dans le model userList qui va exécuter la méthode delete de UtilisateurDAO avec les données fournies.
+            case "updateUser": // Effectue la méthode update dans le model userList qui va exécuter la méthode delete de UtilisateurDAO avec les données fournies.            
+                
                 userListModel.update(
                         modifDialog.getId(),
                         modifDialog.getNom(),
@@ -95,6 +105,7 @@ public class MainControl implements PropertyChangeListener {
                         modifDialog.getPassword());
 
                 modifDialog.setVisible(false);
+
                 break;
 
             case "validNewUser":

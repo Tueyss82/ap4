@@ -7,6 +7,7 @@ package view;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import javax.swing.JOptionPane;
 import model.UserListModel;
 
 /**
@@ -51,6 +52,7 @@ public class ModifDialog extends javax.swing.JDialog {
         cancelButton = new javax.swing.JButton();
         updateButton1 = new javax.swing.JButton();
         textFieldPassword = new javax.swing.JPasswordField();
+        jCheckBoxUnHidePassword = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -78,6 +80,12 @@ public class ModifDialog extends javax.swing.JDialog {
             }
         });
 
+        jCheckBoxUnHidePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxUnHidePasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,13 +106,15 @@ public class ModifDialog extends javax.swing.JDialog {
                             .addComponent(textFieldPrenom)
                             .addComponent(textFieldMail)
                             .addComponent(textFieldIdentifiant)
-                            .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBoxUnHidePassword))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(410, 410, 410)
                         .addComponent(updateButton1)
                         .addGap(93, 93, 93)
                         .addComponent(cancelButton)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +138,8 @@ public class ModifDialog extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBoxUnHidePassword))
                 .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateButton1)
@@ -146,8 +157,54 @@ public class ModifDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void updateButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButton1ActionPerformed
+        String textPrenom = this.getPrenom();
+        String textNom = this.getNom();
+        String textEmail = this.getEmail();
+        String textIdentifiant = this.getIdentifiant();
+        String textPassword = this.getPassword();
+
+        String regexNomPrenom = "^[A-Z][a-zéèêëàâäïîç\\-']{1,}$";
+        String regexEmail = "^[\\w.-]+@[\\w.-]+\\.\\w{2,}$";
+        String regexIdentifiant = "^[a-zA-Z0-9]{8,15}$";
+        String regexMotDePasse = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$";
+        
+        if (textPrenom.isEmpty() && textNom.isEmpty() && textEmail.isEmpty() && textIdentifiant.isEmpty() && textPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs de saisie");
+            return;
+
+        } else if (textPrenom.isEmpty() || textNom.isEmpty() || textEmail.isEmpty() || textIdentifiant.isEmpty() || textPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vous avez oublié de renseigner une de vos informations");
+            return;
+
+        } else if (!textNom.matches(regexNomPrenom)) {
+            JOptionPane.showMessageDialog(null, "Nom invalide");
+            return;
+        } else if (!textPrenom.matches(regexNomPrenom)) {
+            JOptionPane.showMessageDialog(null, "Prénom invalide");
+            return;
+        } else if (!textEmail.matches(regexEmail)) {
+            JOptionPane.showMessageDialog(null, "Email invalide. Format attendu : exemple@domaine.com");
+            return;
+        } else if (!textIdentifiant.matches(regexIdentifiant)) {
+            JOptionPane.showMessageDialog(null, "Identifiant invalide. Il doit être alphanumérique (4 à 15 caractères).");
+            return;
+        } else if (!textPassword.matches(regexMotDePasse)) {
+            JOptionPane.showMessageDialog(null, "Mot de passe invalide. Il doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.");
+            return;
+        }
+       
+        
         listeners.firePropertyChange("updateUser", null, null);
     }//GEN-LAST:event_updateButton1ActionPerformed
+
+    private void jCheckBoxUnHidePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxUnHidePasswordActionPerformed
+        if(jCheckBoxUnHidePassword.isSelected()){
+            this.textFieldPassword.setEchoChar((char) 0);
+        }
+        else {
+            this.textFieldPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBoxUnHidePasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +251,7 @@ public class ModifDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel identifiantLabel;
+    private javax.swing.JCheckBox jCheckBoxUnHidePassword;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JLabel nomLabel;
     private javax.swing.JLabel passwordLabel;

@@ -42,6 +42,8 @@
                           <Component id="textFieldIdentifiant" max="32767" attributes="0"/>
                           <Component id="textFieldPassword" alignment="0" min="-2" pref="389" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jCheckBoxUnHidePassword" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="410" max="-2" attributes="0"/>
@@ -50,7 +52,7 @@
                       <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="258" max="32767" attributes="0"/>
+              <EmptySpace pref="215" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -81,6 +83,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="passwordLabel" linkSize="1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="textFieldPassword" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBoxUnHidePassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -143,6 +146,11 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="textFieldPassword">
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBoxUnHidePassword">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxUnHidePasswordActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
